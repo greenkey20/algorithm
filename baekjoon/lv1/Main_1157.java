@@ -32,6 +32,8 @@ public class Main_1157 {
 		
 //		System.out.println(hm); // 2022.4.29(금) 23h25 중간 점검(hm이 잘 만들어지나 확인)용 추가 
 		
+		// 2022.4.30(토) 1h15 아래 별도 메소드로 refactoring
+		/*
 		Iterator it = hm.entrySet().iterator();
 		int max = 0; // 2022.4.30(토) 0h20 Eddie의 조언 = 일단 반례 abcc 처리한 뒤, max의 위치도 저장?(iterator 복사해서?)하는 것 생각해보기?
 		
@@ -41,20 +43,19 @@ public class Main_1157 {
 			int count = (int)entry.getValue();
 			
 			// 2022.4.29(금) 23h50 시도1)
-			/*
-			if (count > max) {
-				max = count;				
-			} else if (count == max && count != 0) {
-				System.out.println("?");
-				return; // 메소드 실행 종료/Java 함수에서 나가기 -> 2022.4.29(금) 23h50 틀린 이유 = 여기서 나가면 안 됨; 반례 abcc
-			}
-			*/
+//			if (count > max) {
+//				max = count;				
+//			} else if (count == max && count != 0) {
+//				System.out.println("?");
+//				return; // 메소드 실행 종료/Java 함수에서 나가기 -> 2022.4.29(금) 23h50 틀린 이유 = 여기서 나가면 안 됨; 반례 abcc
+//			}
 			
 			if (count >= max) {
 				max = count;
 			}
 			
 		}
+		*/
 		
 		// 2022.4.29(금) 23h30 계속 풀이/추가 -> 시도1)
 		/*
@@ -64,15 +65,41 @@ public class Main_1157 {
 		}
 		*/
 		// 2022.4.30(토) 1h 시도2)
-		if (getKey(hm, max).size() > 1) {
+		if (getKey(hm, getMax(hm)).size() > 1) {
 			System.out.println("?");
 		} else {
-			System.out.println(getKey(hm, max).get(0));
+			System.out.println(getKey(hm, getMax(hm)).get(0));
 		}
 		
 		sc.close();
 		
 	} // main() 종료
+	
+	// 2022.4.30(토) 1h15 refactoring -> 1h20 제출 = 572ms 맞았습니다
+	public static int getMax(Map map) {
+		Iterator it = map.entrySet().iterator();
+		int max = 0;
+		
+		while (it.hasNext()) {
+			Map.Entry entry = (Map.Entry)it.next();
+			
+			int count = (int)entry.getValue();
+			
+			// 2022.4.29(금) 23h50 시도1)
+//			if (count > max) {
+//				max = count;				
+//			} else if (count == max && count != 0) {
+//				System.out.println("?");
+//				return; // 메소드 실행 종료/Java 함수에서 나가기 -> 2022.4.29(금) 23h50 틀린 이유 = 여기서 나가면 안 됨; 반례 abcc
+//			}
+			
+			if (count >= max) {
+				max = count;
+			}
+		}
+		
+		return max;
+	}
 	
 	// 2022.4.29(금) 23h35 추가
 	// 참고: https://rios.tistory.com/entry/JAVA-hashMap-key%EA%B0%92%EC%9C%BC%EB%A1%9C-value-%EC%B0%BE%EA%B8%B0-value%EB%A1%9C-key%EA%B0%92-%EC%B0%BE%EA%B8%B0
