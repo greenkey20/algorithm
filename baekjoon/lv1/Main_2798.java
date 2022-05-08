@@ -21,19 +21,29 @@ public class Main_2798 {
 		}
 		
 		Arrays.sort(iArray);
-		System.out.println(iArray);
+//		System.out.println(iArray); // [I@5f2050f6
+		System.out.println(Arrays.toString(iArray));
 		
 		int sum = 0;
 		
 		for (int i = n - 1; i >= 2; i--) {
-			sum = iArray[i] + iArray[i - 1] + iArray[i - 2];
 			
-			if (sum == m) {
-				System.out.println(m);
-			} else if (sum < m) {
-				System.out.println(sum);
-			} else {
-				continue;
+			for (int j = 1; j <= i - 1; j++) {
+				
+				for (int k = 2; k <= i - 2; k++) {
+					sum = iArray[i] + iArray[i - j] + iArray[i - k];
+					
+					if (sum == m) {
+						System.out.println(m);
+						return;
+					} else if (sum < m) {
+						System.out.println(sum);
+						return;
+					} else {
+						continue;
+					}
+				}
+				
 			}
 			
 		}
