@@ -1,4 +1,4 @@
-package com.baekjoon.control;
+package com.baekjoon.bruteforce;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -47,6 +47,9 @@ public class Main_2798 {
 			}
 			
 		}
+		
+		/* 2022.5.8(일) 23h55 나의 생각 = 중첩 for문 돌아가는 것을 내가 정확하게 파악하고 있는가? 헷갈리면 돌 때마다 찍어보자..
+		 */
 		
 		sc.close();
 	}
