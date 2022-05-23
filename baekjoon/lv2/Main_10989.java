@@ -1,5 +1,7 @@
 package com.baekjoon.sort;
 
+import java.util.Scanner;
+
 // 2022.5.22(일) 23h55
 public class Main_10989 {
 	
@@ -15,6 +17,25 @@ public class Main_10989 {
 		 * 개선된 성능 = 합병, 퀵, 힙
 		 */
 		
+		Scanner sc = new Scanner(System.in);
+		
+		int n = sc.nextInt(); // 수의 개수 n(1~1천만) 주어짐
+		
+		// n개의 수(10,000보다 작거나 같은 자연수)가 주어짐
+		int[] input = new int[n];
+		
+		for (int i = 0; i < n; i++) {
+			input[i] = sc.nextInt();
+		}
+		
+		// 방법1) 기본_버블 정렬
+		for (int i = 0; i < n; i++) {
+			for (int j = 1; j < n; j++) {
+				
+			}
+		}
+		
+		sc.close();
 	}
 
 }
