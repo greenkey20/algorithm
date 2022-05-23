@@ -5,7 +5,9 @@ import java.util.Scanner;
 // 2022.5.22(일) 23h55
 public class Main_10989 {
 	
-	// 주어진 n개의 수를 오름차순으로 정렬하는 프로그램
+	/* 주어진 n개의 수를 오름차순으로 정렬하는 프로그램
+	 * Java8 시간 제한 = 3000ms, 메모리 제한 = 512MB
+	 */
 	public static void main(String[] args) {
 		/* 정렬
 		 * 1. 내 vs 외부 정렬
@@ -17,6 +19,7 @@ public class Main_10989 {
 		 * 개선된 성능 = 합병, 퀵, 힙
 		 */
 		
+		// 2022.5.23(월) 23h50
 		Scanner sc = new Scanner(System.in);
 		
 		int n = sc.nextInt(); // 수의 개수 n(1~1천만) 주어짐
@@ -28,11 +31,28 @@ public class Main_10989 {
 			input[i] = sc.nextInt();
 		}
 		
-		// 방법1) 기본_버블 정렬
-		for (int i = 0; i < n; i++) {
-			for (int j = 1; j < n; j++) {
-				
+		// 방법1) 기본_버블 정렬 -> 시간 복잡도 성능 = O(n^2)
+		for (int i = 0; i < n - 1; i++) { // (n - 1)번 반복문 돎 -> 마지막 반복 시 0번 인덱스에 최소값이 남아있음 
+			for (int j = 0; j < n - 1 - i; j++) { // 반복문 돌 때마다 (맨 마지막 + 1) 원소는 비교에서 제외
+				if (input[j] > input[j + 1]) { // 좌측의 값이 우측의 값보다 큰 경우 -> 좌측의 값(더 큰 숫자)을 우측 자리로 옮겨야 함 -> 오름차순 정렬
+					int temp = input[j];
+					// v1) 아래와 같은 순서로 하면 자리 바꾸기가 안 되지 >.<
+					/*
+					input[j + 1] = temp;
+					input[j] = input[j + 1];
+					*/
+					
+					// v2) 0h25 수정 -> console 테스트 시 오름차순은 됨 -> 2022.5.24(화) 0h30 제출 = 시간 초과
+					input[j] = input[j + 1];
+					input[j + 1] = temp;
+				}
 			}
+		}
+		
+		// 방법2) 합병 정렬
+		
+		for (int i = 0; i < n; i++) {
+			System.out.println(input[i]);
 		}
 		
 		sc.close();
