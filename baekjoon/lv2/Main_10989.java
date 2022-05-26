@@ -63,10 +63,15 @@ public class Main_10989 {
 		sc.close();
 	}
 	
-	public static int[] MergeSort(int[] input, int n) {
+	public static int[] mergeSort(int[] input, int n) {
 		// 합병 정렬 메소드 구현
 		
 		return input;
+	}
+	
+	// 2022.5.26(목) 23h55
+	public static int[] sort() {
+		
 	}
 
 }
