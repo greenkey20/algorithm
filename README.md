@@ -12,3 +12,6 @@ daily algorithm exercises provided by [Baekjoon](https://www.acmicpc.net/) (Apri
   * 4/11 유효한 팰린드롬
   * 4/12 문자열 뒤집기
   * 4/13 로그 파일 재정렬
+* control
+* math
+* sort
