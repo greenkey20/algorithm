@@ -65,6 +65,7 @@ public class Main_10989 {
 	
 	public static int[] mergeSort(int[] input, int n) {
 		// 합병 정렬 메소드 구현
+		int mid = n/2;
 		
 		return input;
 	}
