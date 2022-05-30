@@ -50,6 +50,7 @@ public class Main_10989 {
 		}
 		
 		/* 방법2) 합병 정렬
+		 * KNOU '알고리즘' 교재 참고
 		 * 
 		 * 2022.5.25(수) 23h50 v3
 		 * 분할 정복 알고리즘을 적용 가능한 문제 중 하나
@@ -97,6 +98,15 @@ public class Main_10989 {
 	// 2022.5.26(목) 23h55 v4 sort() -> 2022.5.29(일) 0h5 v6 메소드명 수정 등 합병 함수/merge() 메소드 구현
 	public static int[] merge(int[] leftArray, int[] rightArray, int mid, int n) {
 		int[] mergedArray = new int[n];
+		
+		// 2022.5.30(월) 23h55
+		int i = 0;
+		int j = 0;
+		int k = 0;
+		
+		while (i < n && j < n - mid) {
+			
+		}
 		
 		return mergedArray;
 	}
