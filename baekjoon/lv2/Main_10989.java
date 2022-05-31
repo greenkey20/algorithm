@@ -55,13 +55,16 @@ public class Main_10989 {
 		 * 2022.5.25(수) 23h50 v3
 		 * 분할 정복 알고리즘을 적용 가능한 문제 중 하나
 		 * 분할(입력의 크기가 n인 배열을 n/2개의 원소를 가진 2개의 부분배열로 분할) -> 정복(각각의 부분배열에 대해 합병 정렬을 순환적으로 적용해서 두 부분배열을 정렬) -> 결합(정렬된 두 부분배열을 합병해서 하나의 정렬된 배열을 만듦)
+		 * 
+		 * 2022.6.1(수) 0h10 v9 오름차순 정렬은 되는 듯함 vs 제출 = 시간 초과
+		 * 질문 검색해보니, StringBuilder, BufferedWriter 사용(많은 입출력이 있을 경우 BufferWriter/Reader를 사용하여 처리하는 게 좋다고 함 https://www.acmicpc.net/board/view/70638)하고 최대한 코드 최적화 필요한 듯..
 		 */
 		
 		for (int i = 0; i < n; i++) {
 //			System.out.println(inputArray[i]);
 			
-			// 2022.5.31(화) 23h45 v8
-			System.out.println(mergeSort(inputArray, n));
+			// 2022.5.31(화) 23h45 v8 -> 2022.6.1(수) 0h v9 테스트 시, mergeSort[] 메소드로부터 반환받는 int[] 배열의 i번째 원소를 출력하도록 수정
+			System.out.println(mergeSort(inputArray, n)[i]);
 		}
 		
 		sc.close();
@@ -117,8 +120,8 @@ public class Main_10989 {
 		int j = 0; // 비교하고자 하는 오른쪽 부분배열 원소의 인덱스
 		int k = 0;
 		
-		while (i < n && j < n - mid) {
-			// 2022.5.31(화) 23h45 v8
+		while (i < mid && j < n - mid) {
+			// 2022.5.31(화) 23h45 v8 -> 2022.6.1(수) 0h v9 테스트 시, leftArray의 크기를 n(x) mid(o)로 수정 vs otherwise, index out of bounds 예외 발생
 			// 왼/오른쪽 부분배열의 가장 첫번째 원소의 크기를 비교해서, 작은 것부터 mergedArray에 넣음
 			if (leftArray[i] <= rightArray[j]) {
 				mergedArray[k] = leftArray[i];
@@ -131,7 +134,18 @@ public class Main_10989 {
 			}
 		}
 		
-//		for (int i = 0; )
+		// 2022.6.1(수) 0h v9 -> 2022.6.1(수) 0h v9 테스트 시, leftArray의 크기를 n(x) mid(o)로 수정 vs otherwise, index out of bounds 예외 발생
+		// 왼쪽 부분배열에 남아있는 모든 원소를 mergedArray로 이동
+		for (; i < mid; i++) {
+			mergedArray[k] = leftArray[i];
+			k += 1;
+		}
+		
+		// 오른쪽 부분배열에 남아있는 모든 원소를 mergedArray로 이동
+		for (; j < n - mid; j++) {
+			mergedArray[k] = rightArray[j];
+			k += 1;
+		}
 		
 		return mergedArray;
 	}
