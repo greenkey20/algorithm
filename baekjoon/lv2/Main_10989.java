@@ -58,7 +58,10 @@ public class Main_10989 {
 		 */
 		
 		for (int i = 0; i < n; i++) {
-			System.out.println(inputArray[i]);
+//			System.out.println(inputArray[i]);
+			
+			// 2022.5.31(화) 23h45 v8
+			System.out.println(mergeSort(inputArray, n));
 		}
 		
 		sc.close();
@@ -95,18 +98,40 @@ public class Main_10989 {
 		return inputArray;
 	}
 	
-	// 2022.5.26(목) 23h55 v4 sort() -> 2022.5.29(일) 0h5 v6 메소드명 수정 등 합병 함수/merge() 메소드 구현
+	/**
+	 * 2022.5.26(목) 23h55 v4 sort()
+	 * 2022.5.29(일) 0h5 v6 메소드명 수정 등 합병 함수/merge() 메소드 구현
+	 * 2022.5.31(화) 23h45 v8 alt + shift + j = 메소드에 대한 주석 템플릿 생성
+	 * 
+	 * @param leftArray : 합병 대상 왼쪽 부분정렬
+	 * @param rightArray : 합병 대상 오른쪽 부분정렬
+	 * @param mid : 왼쪽 부분정렬의 원소의 개수
+	 * @param n : 오른쪽 부분정렬의 원소의 개수(n - mid) 계산을 위해 매개변수로 받음
+	 * @return : 합병된 하나의 정렬된 배열 반환
+	 */
 	public static int[] merge(int[] leftArray, int[] rightArray, int mid, int n) {
 		int[] mergedArray = new int[n];
 		
-		// 2022.5.30(월) 23h55
-		int i = 0;
-		int j = 0;
+		// 2022.5.30(월) 23h55 v7
+		int i = 0; // 비교하고자 하는 왼쪽 부분배열 원소의 인덱스
+		int j = 0; // 비교하고자 하는 오른쪽 부분배열 원소의 인덱스
 		int k = 0;
 		
 		while (i < n && j < n - mid) {
-			
+			// 2022.5.31(화) 23h45 v8
+			// 왼/오른쪽 부분배열의 가장 첫번째 원소의 크기를 비교해서, 작은 것부터 mergedArray에 넣음
+			if (leftArray[i] <= rightArray[j]) {
+				mergedArray[k] = leftArray[i];
+				k += 1;
+				i += 1;
+			} else {
+				mergedArray[k] = rightArray[j];
+				k += 1;
+				j += 1;
+			}
 		}
+		
+//		for (int i = 0; )
 		
 		return mergedArray;
 	}
