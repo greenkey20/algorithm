@@ -14,4 +14,5 @@ daily algorithm exercises provided by [Baekjoon](https://www.acmicpc.net/) (Apri
   * 4/13 로그 파일 재정렬
 * control
 * math
+* brute force
 * sort
