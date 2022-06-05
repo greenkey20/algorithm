@@ -31,7 +31,9 @@ public class Main_1436 {
 		}
 		*/
 		
-		// The literal 999999999999 of type int is out of range 
+		// v1) 이렇게 하면 첫번째 종말의 숫자 666만 출력할 수 있음 ㅠ.ㅠ
+		// i 크기 조건을 그저 충분히 큰 수로 지정하고자 했더니, The literal 999999999999 of type int is out of range
+		/*
 		for (int i = 666; i < 1000000000; i++) {
 			if (String.valueOf(i).contains("666")) {
 				count += 1;
@@ -44,6 +46,13 @@ public class Main_1436 {
 			} else {
 				continue;
 			}
+		}
+		*/
+		
+		// 2022.6.5(일) 23h55
+		for (int i = 666; i < 1000000000; i++) {
+			
+			
 		}
 		
 //		sc.close();
