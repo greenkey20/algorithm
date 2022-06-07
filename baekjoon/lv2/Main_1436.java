@@ -42,20 +42,20 @@ public class Main_1436 {
 		 * Eddie와의 대화 중에 내 코드 다시 점검해보니 count-- 부분에 이상 있음 + 2개의 else문 필요 없음 감지 -> 2022.6.6(월) 23h35 v2 제출 = 메모리 초과
 		 * 
 		 */
-		// i 크기 조건을 그저 충분히 큰 수로 지정하고자 했더니, The literal 999999999999 of type int is out of range
-		for (int i = 666; i < 1000000000; i++) {
-			if (String.valueOf(i).contains("666")) {
-				count += 1;
-				if (count == n) {
-					System.out.println(i);
-				} /* else {
-					count--;
-					continue;
-				} */
-			} /* else {
-				continue;
-			} */
-		}
+		// i 크기 조건을, int 자료형의 표현 가능 범위에 대한 고려 없이, 그저 충분히 큰 수로 지정하고자 했더니, The literal 999999999999 of type int is out of range
+//		for (int i = 666; i < 1000000000; i++) {
+//			if (String.valueOf(i).contains("666")) {
+//				count += 1;
+//				if (count == n) {
+//					System.out.println(i);
+//				} /* else {
+//					count--;
+//					continue;
+//				} */
+//			} /* else {
+//				continue;
+//			} */
+//		}
 		
 		// 2022.6.5(일) 23h55 여전히 아이디어가 잘 안 떠오르며 어떻게 풀어야 할지 잘 모르겠음 ㅠ.ㅠ
 		/*
@@ -63,6 +63,21 @@ public class Main_1436 {
 			
 		}
 		*/
+		
+		// 2022.6.7(화) 23h30 v3 -> 23h55 제출 = 의도한대로 프로그램 동작 안 함 + 메모리 초과
+		for (int i = 666; i < 2100000000; i++) {
+			StringBuilder sb = new StringBuilder();
+			sb.append(i);
+//			System.out.println(sb);
+			
+			if (sb.indexOf("666") > 0) {
+				count++;
+				if (count == n) {
+					System.out.println(i);
+				}
+			}
+			
+		}
 		
 //		sc.close();
 	}
