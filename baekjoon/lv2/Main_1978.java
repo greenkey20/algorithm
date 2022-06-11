@@ -28,6 +28,7 @@ public class Main_1978 {
 		/* 2022.6.10(금) 23h45
 		 * 1~1000 범위의 Eratosthenes의 체(sieve) 만들기 -> 1 + 2의 배수 + 3의 배수 + 5의 배수 + 7의 배수 + 11의 배수 + 13의 배수.. 지우기 
 		 * 
+		 2022.6.11(토) 23h55 prime number theorem		
 		 */
 		
 		sc.close();
