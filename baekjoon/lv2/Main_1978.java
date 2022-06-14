@@ -47,12 +47,14 @@ public class Main_1978 {
 	 * @return
 	 */
 	public static HashSet eratosthenesSieve(int input) {
+		// 2022.6.14(화) 23h50
+		HashSet<Integer> hs = new HashSet<>();
 		
 		for (int i = 0; i < input; i++) {
-			
+			hs.add(i);
 		}
 		
-		return null;
+		return hs;
 	}
 
 }
