@@ -47,6 +47,11 @@ public class Main_1978 {
 	 * @return
 	 */
 	public static HashSet eratosthenesSieve(int input) {
+		// 2022.6.15(수) 23h35
+		int ceiling = (int)Math.floor(Math.pow(input, 2));
+		
+		eratosthenesSieve(ceiling);
+		
 		// 2022.6.14(화) 23h50
 		HashSet<Integer> hs = new HashSet<>();
 		
@@ -54,7 +59,14 @@ public class Main_1978 {
 			hs.add(i);
 		}
 		
+//		int[] primeNumbers = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31};
+		
 		return hs;
+	}
+	
+	// 2022.6.15(수) 23h35
+	public static int[] getAllPrimeNumbers(int input) {
+		
 	}
 
 }
