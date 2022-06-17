@@ -10,6 +10,10 @@ package com.baekjoon.queue;
  * 원에서 사람들이 제거되는 순서를 (N, K)-요세푸스 순열이라고 한다. 예를 들어 (7, 3)-요세푸스 순열은 <3, 6, 2, 7, 5, 1, 4>이다.
  * 
  * N과 K가 주어지면 (N, K)-요세푸스 순열을 구하는 프로그램을 작성하시오
+ * 
+ * queue
+ * stack
+ * 원형 queue
  */
 public class Main_11866 {
 
