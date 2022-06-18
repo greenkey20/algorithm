@@ -16,3 +16,4 @@ daily algorithm exercises provided by [Baekjoon](https://www.acmicpc.net/) (Apri
 * math
 * brute force
 * sort
+* queue
