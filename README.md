@@ -1,6 +1,11 @@
 # algorithm
 daily algorithm exercises provided by [Baekjoon](https://www.acmicpc.net/) (April 2022~)
 
+## languages
+* Java
+* Python
+
+## categories
 * 입출력
   * 4/5 hello world 출력
   * 4/6 A B -> A+B
