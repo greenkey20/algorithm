@@ -1,5 +1,7 @@
 package com.baekjoon.queue;
 
+import java.util.Scanner;
+
 /**
  * 2022.6.16(목) 23h50
  * @author greenpianorabbit
@@ -11,10 +13,28 @@ package com.baekjoon.queue;
  * 
  * N과 K가 주어지면 (N, K)-요세푸스 순열을 구하는 프로그램을 작성하시오
  * 
+ * 알고리즘 분류 = 구현; 자료 구조; queue
+ * 
  * queue
  * stack
  * 원형 queue
  */
 public class Main_11866 {
+	
+	// 2022.6.20(월) 23h50
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int n = sc.nextInt(); // n명의 사람들이 앉아있음
+		int k = sc.nextInt(); // k번째 사람을 제거함
+		
+		
+		
+		
+		
+		
+		sc.close();
+		
+	}
 
 }
