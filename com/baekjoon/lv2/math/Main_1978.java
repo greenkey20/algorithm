@@ -36,20 +36,26 @@ public class Main_1978 {
          * 5 이하의 자연수가 합성수라면, 이 합성수의 소인수는 루트5(=2.37)보다 같거나 작다 -> 1~5의 자연수 집합으로부터 1과 2의 배수(단, 2는 제외)를 제외하면 모든 소수를 구할 수 있음 -> 1~5의 자연수 집합의 모든 소수 = 2, 3, 5
          */
 
-        // 2022.10.1(토) 23h30 -> 23h40 틀렸습니다 -> 참고 자료들 구글링
+        // 2022.10.1(토) 23h30 -> 23h40 틀렸습니다 -> 참고 자료들 구글링 -> 2022.10.2(일) 23h50 수정
+        boolean isPrime = false;
         for (int i = 0; i < n; i++) {
             if (inputs[i] == 1) {
-                continue;
+                continue; // unnecessary as the last statement in a loop
             } else if (inputs[i] == 2) {
                 count++;
             } else {
-                for (int j = 3; j <= Math.sqrt(i); j += 2) {
+                for (int j = 3; j <= Math.sqrt(inputs[i]); j += 2) {
 					if (inputs[i] % j == 0) {
-                        continue;
+                        isPrime = false;
+                        break; // 이 line을 안 써서 계속 '틀렸습니다' ㅠㅠ
                     }
                 }
 
-                count++;
+                isPrime = true;
+
+                if (isPrime) {
+                    count++;
+                }
             }
         }
 
