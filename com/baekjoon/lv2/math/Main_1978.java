@@ -36,23 +36,31 @@ public class Main_1978 {
          * 5 이하의 자연수가 합성수라면, 이 합성수의 소인수는 루트5(=2.37)보다 같거나 작다 -> 1~5의 자연수 집합으로부터 1과 2의 배수(단, 2는 제외)를 제외하면 모든 소수를 구할 수 있음 -> 1~5의 자연수 집합의 모든 소수 = 2, 3, 5
          */
 
-        // 2022.10.1(토) 23h30 -> 23h40 틀렸습니다 -> 참고 자료들 구글링 -> 2022.10.2(일) 23h50 수정
-        boolean isPrime = false;
+        // 2022.10.1(토) 23h30 -> 23h40 틀렸습니다 -> 참고 자료들(특히 https://st-lab.tistory.com/80) 구글링 -> 2022.10.2(일) 23h50 수정(7회 제출 ㅠㅠ) -> 2022.10.3(월) 0h10 맞았습니다
+        /* 내가 놓쳤던 점
+        1. isPrime flag(상태 저장 변수)를 외부for문 밖에 선언해두면, 내부for문에서 false로 바뀐 다음 더 이상 값이 업데이트되지 않음
+        2. 내부for문에서 홀수만 검사하고자 했다면, 짝수 검사하는 조건문을 추가했어야 함
+        3. 내부for문에서 break함으로써 반복 횟수 줄여야 했음 -> 이 break 없이도 동작은 함 + 백준에서 성능 차이도 크게 없어보임(break 했을 때 소요 시간 216ms, 메모리 17792KB vs 안 했을 때 소요 시간 220ms, 메모리 17824KB)
+        -> 내가 이 로직을 안다고 생각하고 전반적으로 꼼꼼하게 구현하지 못했음
+         */
         for (int i = 0; i < n; i++) {
+            boolean isPrime = true;
+
             if (inputs[i] == 1) {
                 continue; // unnecessary as the last statement in a loop
             } else if (inputs[i] == 2) {
                 count++;
+            } else if (inputs[i] % 2 == 0) {
+                continue;
             } else {
                 for (int j = 3; j <= Math.sqrt(inputs[i]); j += 2) {
-					if (inputs[i] % j == 0) {
+                    if (inputs[i] % j == 0) {
                         isPrime = false;
-                        break; // 이 line을 안 써서 계속 '틀렸습니다' ㅠㅠ
+                        break;
                     }
                 }
 
-                isPrime = true;
-
+//                isPrime = true;
                 if (isPrime) {
                     count++;
                 }
