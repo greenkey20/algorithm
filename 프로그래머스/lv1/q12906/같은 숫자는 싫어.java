@@ -1,6 +1,8 @@
+package 프로그래머스.lv1.q12906;
+
 import java.util.*;
 
-public class Solution {
+class Solution {
     // 2022.11.5(토) 23h45
     public int[] solution(int[] arr) {        
         // 제거된 후 남은 수들을 반환할 때는 배열 arr의 원소들의 순서를 유지해야 함 -> queue 자료구조 사용
@@ -40,4 +42,9 @@ public class Solution {
 
         return answer;
     }
+
+    /* 회고
+    1. 배열 arr의 각 원소는 0~9 정수라는 점을 이용해서, 반복 여부 비교할 변수를 하나 10이나 -1 등의 숫자로 만들어두고 시작할 수 있음
+    2. 어떤 분은 리턴할 자료를 stack으로 만듦 + stack.peek() 함수 이용(https://school.programmers.co.kr/questions/37904)
+     */
 }
