@@ -14,7 +14,7 @@ public class Babbling1 {
 
             // 2022.11.13(일) 1h15 v2
             String toCheck = babbling[i];
-            String replaced = toCheck.replace("aya", "/").replace("ye", "/").replace("woo", "/").replace("ma", "/");
+            String replaced = toCheck.replace("aya", "/").replace("ye", "/").replace("woo", "/").replace("ma", "/"); // replaceAll 사용한 다른 사람 답안 보고 나의 질문 = 나는 replace 사용하고 통과했는데 어떻게 가능했지? -> 문제에 따르면 각 옹알이 단어는 문장/babbling[i]에 1번만 등장함
 //            System.out.println(replaced);
 //            if (replaced.length() == 0) answer++;
             replacedWords[i] = replaced;
@@ -32,6 +32,13 @@ public class Babbling1 {
             // googling '자바 문자열이 알파벳인지' -> 'Java에서 문자열에 알파벳만 포함되어 있는지 확인'(https://www.techiedelight.com/ko/check-string-contains-only-alphabets-java/)
             // if (!toCheck.chars().anyMatch(Character::isLetter)) answer++; // 처음에 allMatch 연산(모든 요소들이 매개값으로 주어진 predicate의 조건을 만족하는지 조사)했는데, 잘 생각해보면 내가 원하는 결과를 줄 수 없음
             if (!toCheck.chars().anyMatch(ch -> Character.isLetter(ch))) answer++;
+        }
+
+        // 2022.11.13(일) 2h30 다른 사람의 정규 표현식 사용 코드 -> 아래와 같이 작성/제출하면 통과
+        for (int i = 0; i < babbling.length; i++) {
+            // 예시1 = ^(aya(?!aya)|ye(?!ye)|woo(?!woo)|ma(?!ma))+$
+            // 예시2 = (aya|ye|woo|ma)+
+            if (babbling[i].matches("^(aya|ye|woo|ma)+$")) answer++; // ^, $ 기호 없어도 통과됨
         }
 
         return answer;
