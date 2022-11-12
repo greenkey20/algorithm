@@ -1,6 +1,6 @@
 package 프로그래머스.lv0.q120956;
 
-class Solution {
+class SolutionV1 {
     // 2022.11.12(토) 23h50 v1 = 문제에서 의도한 바를 구현하지 못했으므로, 실패
     public int solution(String[] babbling) {
         int answer = 0;
