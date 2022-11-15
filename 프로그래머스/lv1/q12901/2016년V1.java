@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.time.format.TextStyle;
 import java.util.Locale;
 
-class Solution {
+class SolutionV1 {
     // 2022.11.16(수) 0h10
     public String solution(int a, int b) {
         String answer = "";

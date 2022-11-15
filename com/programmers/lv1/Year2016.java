@@ -46,6 +46,7 @@ public class Year2016 {
         }
         // nThDay = a > 1 ? (a - 1) * daysInMonth[a - 2] + b : b;
 
+        // 1월의 요일 패턴에 따라 각 요일의 인덱스 정함 <- 1/1(금), 1/2(토), 1/3(일), 1/4(월) 등
         String[] daysOfWeek = new String[]{"THU", "FRI", "SAT", "SUN", "MON", "TUE", "WED"};
 
         return daysOfWeek[nThDay % 7];

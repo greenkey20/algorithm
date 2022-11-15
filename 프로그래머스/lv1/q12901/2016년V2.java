@@ -1,9 +1,6 @@
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.format.TextStyle;
-import java.util.Locale;
+package 프로그래머스.lv1.q12901;
 
-class Solution {
+class SolutionV2 {
     // 2022.11.16(수) 0h10
     public String solution(int a, int b) {
         int[] numOfDaysInMonth = new int[]{31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
