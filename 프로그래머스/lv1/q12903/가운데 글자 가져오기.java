@@ -1,3 +1,5 @@
+package 프로그래머스.lv1.q12903;
+
 class Solution {
     // 2022.11.17(목) 2h15
     public String solution(String s) {
@@ -13,4 +15,8 @@ class Solution {
         
         return answer;
     }
+
+    /* 회고
+    1. 3항 연산자 활용해서 1줄로도 가능함
+     */
 }
