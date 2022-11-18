@@ -1,17 +1,16 @@
 class Solution {
-    public int solution(int[] ingredients) {
+    public int solution(int[] ingredient) {
         int answer = 0;
         
-        StringBuilder sb = new StringBuilder();
-
-        for (int i = 0; i < ingredients.length; i++) {
-            sb.append(ingredients[i]);
-
-            if (sb.length()  >= 4 && sb.substring(sb.length() - 4, sb.length()).equals("1231")) {
-                answer++;
-                sb.delete(sb.length() - 4, sb.length());
+        for(int i=0; i<ingredient.length-3; i++){
+            if(ingredient[i]==0) continue;
+            if(ingredient[i]==1&&ingredient[i+1]==2&&ingredient[i+2]==3&&ingredient[i+3]==1){
+                for(int j=i+3; j>0;j--){
+                    ingredient[j] = (j>3) ? ingredient[j-4] : 0;    
+                }
+                answer++;    
             }
-        }
+        }        
         
         return answer;
     }
