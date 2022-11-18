@@ -1,3 +1,5 @@
+package 프로그래머스.unrated.q133502;
+
 class Solution {
     public int solution(int[] ingredients) {
         int answer = 0;

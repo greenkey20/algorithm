@@ -40,7 +40,7 @@ public class makeHamburgers {
     }
 
     // 구글링 https://yongku.tistory.com/entry/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%ED%96%84%EB%B2%84%EA%B1%B0-%EB%A7%8C%EB%93%A4%EA%B8%B0-%EC%9E%90%EB%B0%94JAVA + 문제 질문/토론 글 https://school.programmers.co.kr/questions/39179
-    public int solutionReference(int[] ingredients) {
+    public int solutionReference1(int[] ingredients) {
         int answer = 0;
 
         return answer;
@@ -72,6 +72,49 @@ public class makeHamburgers {
             }
         }
 
+        return answer;
+    }
+
+    /* 회고
+    1. 문제의 추상화를 조금 더 신중하게, 천천히, 급하지 않게, 했었어야 했다
+    stack 자료구조를 쓰든, String으로 풀든, 문제에서 요구하는 바, 그리고 그것을 달성하기 위한 방법을 더 정확하고 면밀하게 검토하고 정리했어야 한다
+    2. 내가 문제에 처음 접근할 때는 꼭 입/출력 예시1 ingredients 배열의 첫번째 빵에 재료들을 쌓아나가야겠다고 (편협하게/잘못)생각했었다
+    vs 다시 생각하면 (적어도 이 문제에서는) 처음 나오는 빵이든, 나중에 나오는 빵이든, 나오는 순서와 사용하는 순서는 상관이 없으며, 현재까지 다른 풀이 방법들을 보면 앞에 나온 빵에 재료들을 쌓을 수 없으면 그냥 내버려두고 다음 재료로 넘어간다
+    3. stack의 개념은 Stack, ArrayList와 같은 collection framework 뿐만 아니라 배열, 문자열 등 자료를 차곡차곡 쌓을 수 있는 방법이라면 여러 가지 방식으로 구현이 가능하다 -> 문제 처음 접근/검토 시에는 너무 특정 자료구조에 매몰되지 말고, 문제의 본질 파악 및 정확한 추상화에 집중해보자
+     */
+
+    // 11h45 나의 생각 = 와, reference2/3과 같이 스택에 재료 쌓으며, 햄버거 여부 확인하고, 스택으로부터 햄버거는 치워서 남은 재료들로 다시 쌓고.. 큰 접근 방식은 동일한 것 같은데, 구현이 훨씬 어려워 보이는 것은 왜일까? 이런 접근 방법을 구상/구현할 수 있으려면 현재 나는 어떤 부분을 훈련해야 할까? 일단 아래와 같은 코드의 동작을 이해는 했으니, 내가 직접 (다음 며칠 이내로)짜보자
+    // 요오게, ksb0903, 뿌찌뿌찌, 손지희, withthdud0923@gmail.com 외 2 명
+    public int solutionReference2(int[] ingredient) {
+        int[] stack = new int[ingredient.length];
+        int sp = 0;
+        int answer = 0;
+        for (int i : ingredient) {
+            stack[sp++] = i; // 11h40 나의 질문 = stack[i]에 i번째 재료를 넣고, 그 다음에 sp를 1 증가시켜 나간다고 이해하면 맞나?
+            if (sp >= 4 && stack[sp - 1] == 1
+                    && stack[sp - 2] == 3
+                    && stack[sp - 3] == 2
+                    && stack[sp - 4] == 1) {
+                sp -= 4;
+                answer++;
+            }
+        }
+        return answer;
+    }
+
+    // 크캬캬캬님 -> 11h25 동작 원리 아직 정확히 이해 안 됨 -> 11h35 입/출력 예시1로 동작 종이에 써서 이해함
+    // 나의 질문 = 2중 for문인데도 시간 초과 없이 통과할 수 있는 이유/원리는 무엇일까?
+    public int solutionReference3(int[] ingredient) {
+        int answer = 0;
+        for (int i = 0; i < ingredient.length - 3; i++) {
+            if (ingredient[i] == 0) continue;
+            if (ingredient[i] == 1 && ingredient[i + 1] == 2 && ingredient[i + 2] == 3 && ingredient[i + 3] == 1) {
+                for (int j = i + 3; j > 0; j--) {
+                    ingredient[j] = (j > 3) ? ingredient[j - 4] : 0; // 햄버거 아직 안 만들어진 재료들을 뒤로 옮기고, 이미 햄버거로 만든 재료들은 0으로 바꿈
+                }
+                answer++;
+            }
+        }
         return answer;
     }
 }
