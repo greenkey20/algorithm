@@ -1,10 +1,10 @@
 # [unrated] 햄버거 만들기 - 133502 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/133502#qna) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/133502?language=java) 
 
 ### 성능 요약
 
-메모리: 83.3 MB, 시간: 0.08 ms
+메모리: 74.4 MB, 시간: 0.02 ms
 
 ### 구분
 
