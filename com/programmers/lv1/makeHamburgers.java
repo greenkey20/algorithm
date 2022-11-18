@@ -48,7 +48,7 @@ public class makeHamburgers {
 
     // 2022.11.18(금) 10h20 나의 시도2 = 햄버거를 String으로 만들어가는 방법
     /* 참고 https://school.programmers.co.kr/questions/38823 = 효율성은 스트링과 스트링빌더의 구분을 할 수 있는지 + 스트링의 replacefirst를 스트링빌더로 동작할 수 있는지가 관건
-    vs 10h30 제출 시 9개(/총 18개) 테스트케이스 시간 초과로 실패
+    vs 10h30 제출 시 9개(/총 18개) 테스트케이스 시간 초과로 실패 -> 정확히 어느 코드가 효율성을 저하시키는지 정확히 모르겠지만(나의 질문 = 어떻게 알 수 있을까?) 위 참고 글 코드와 비교/대조해서 조금 수정해봄 -> 11h 통과
      */
     public int solutionDraft2(int[] ingredients) {
         int answer = 0;
@@ -58,12 +58,17 @@ public class makeHamburgers {
         for (int i = 0; i < ingredients.length; i++) {
             sb.append(ingredients[i]);
 
-            if (sb.length() >= 4) {
+            if (sb.length() >= 4 && sb.substring(sb.length() - 4, sb.length()).equals("1231")) {
+                answer++;
+                sb.delete(sb.length() - 4, sb.length());
+
+                /* string 햄버거 v1
                 int hamburgerIndex = sb.indexOf("1231");
                 if (hamburgerIndex >= 0) {
                     answer++;
                     sb.delete(hamburgerIndex, hamburgerIndex + 4);
                 }
+                 */
             }
         }
 
