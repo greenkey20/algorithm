@@ -1,15 +1,13 @@
-import java.util.*;
+import java.io.*;
 
 public class Main {
-    public static void main(String[] args) {
-        // 데이터 입력받기
-        Scanner sc = new Scanner(System.in);
-
-        int n = sc.nextInt();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
         int[] arr = new int[n];
 
         for (int i = 0; i < n; i++) {
-            arr[i] = sc.nextInt();
+            arr[i] = Integer.parseInt(br.readLine());
         }
 
         // 선택 정렬 알고리즘 구현
@@ -24,8 +22,24 @@ public class Main {
             }
         }
 
+        // 문제에서 요구하는 출력 = 1~n번째 줄에 오름차순으로 정렬한 결과를 1줄에 숫자 1개씩 출력
+        // 2022.11.21(월) 13h40 v2 = 좀 더 효율적인 출력 방식1
+        StringBuilder sb = new StringBuilder();
+
+        // 2022.11.21(월) 13h50 v2 = 좀 더 효율적인 출력 방식2
+        //BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
         for (int i : arr) {
-            System.out.println(i);
+//            System.out.println(i);
+            sb.append(i).append("\n");
+
+            //bw.write(i);
+            //bw.newLine();
         }
+        System.out.println(sb);
+
+        //br.close();
+        //bw.flush();
+        //bw.close();
     }
 }
