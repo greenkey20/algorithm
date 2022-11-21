@@ -1,7 +1,7 @@
 # 백준 Java 풀이 시 tips/guide
 
 ## 1. public class 이름은 Main이어야 함
-- Main 이외의 클래스를 써야 하는 경우, public이 아닌 클래스나 inner 클래스로 만들어서 사용
+- 백준.Bronze.q2750.Main 이외의 클래스를 써야 하는 경우, public이 아닌 클래스나 inner 클래스로 만들어서 사용
 
 ## 2. import 부분도 함께 제출해야 함
 
@@ -15,7 +15,8 @@ cf. 예시 코드 DfsSample.java 참고
 1. Scanner는 느림 → **BufferReader 사용하기**
 
 > [**백준 입력 속도 비교**](https://www.acmicpc.net/blog/view/56)<br> 
-> Java BufferedReader, Integer.parseInt 평균 0.6585초 vs Scanner 평균 4.8448초
+> Java BufferedReader, Integer.parseInt 평균 0.6585초<br>
+> vs Scanner 평균 4.8448초
 > 
 > ❕ **Scanner가 느린 이유** (✏️ 더 공부 필요)
 > 1. 내부적으로 nextFloat() 등 호출 시 다음 입력을 찾기 위해 정규식을 사용해서
@@ -33,6 +34,11 @@ cf. 예시 코드 InputCodes.java 참고
 ### ✅ 효율적인 출력
 하나의 문자열로 이어 한 번에(o) 반복문 활용한(x) 출력
 e.g. StringBuilder 사용
+
+> [**백준 출력 속도 비교**](https://www.acmicpc.net/blog/view/57) : 총 N개의 줄에 1부터 10,000,000까지의 자연수를 한 줄에 하나씩 출력하는 시간을 10번 측정해서 평균 값을 낸 것<br>
+> Java BufferedWriter bf.write(i + "\n") 평균 0.9581초<br>
+> vs StringBuilder를 이용해 문자열 하나로 만든 다음 System.out.println(sb) 평균 1.1881초<br>
+> vs System.out.println(i) 평균 30.013초 
 
 ## References
 - [자바로 백준 풀 때의 팁 및 주의점 (boj java)](https://nahwasa.com/m/172)
