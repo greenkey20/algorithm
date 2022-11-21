@@ -16,9 +16,14 @@ cf. 예시 코드 DfsSample.java 참고
 
 > [**백준 입력 속도 비교**](https://www.acmicpc.net/blog/view/56)<br> 
 > Java BufferedReader, Integer.parseInt 평균 0.6585초 vs Scanner 평균 4.8448초
-> - Scanner가 느린 이유 = 내부적으로 nextFloat() 등 호출 시 다음 입력을 찾기 위해 정규식을 사용해서(✏️ 더 공부 필요)
+> 
+> ❕ **Scanner가 느린 이유** (✏️ 더 공부 필요)
+> 1. 내부적으로 nextFloat() 등 호출 시 다음 입력을 찾기 위해 정규식을 사용해서
+> 2. Scanner에서 쓰는 버퍼 사이즈가 BufferedReader에서 사용하는 버퍼 사이즈보다 작음
 
-2. **StringTokenizer()(o)** String에 대한 split()(x)로 **문자열 자르기**
+2. **StringTokenizer 클래스(o)** String에 대한 split()(x)로 **문자열 자르기**
+- StringTokenizer 클래스는 긴 문자열을 지정된 구분자(delimiter)를 기준으로 여러 개의 token/문자열로 잘라내는 데 사용됨
+  - 단, 구분자로 1개의 문자만 사용 가능 → 보다 복잡한 형태의 구분자로 문자열을 나눠야 할 때는 정규식 사용하는 메서드(e.g. String의 split(String regex), Scanner의 useDelimiter(String pattern) 등) 사용해야 함
 
 3. 입력을 위한, System.in이 들어간, 클래스는 하나만 쓰기 
 - 백준 입력 = 파일 → 일정량을 읽어들인 후 사용자의 요청(readLine() 등)에 따라 해당 버퍼에서 꺼내옴 → 여러 개 선언해두면 이미 다른 클래스에서 버퍼에 쌓인 부분 때문에 제대로 읽을 수 없게 됨
@@ -26,7 +31,10 @@ cf. 예시 코드 DfsSample.java 참고
 cf. 예시 코드 InputCodes.java 참고
 
 ### ✅ 효율적인 출력
+하나의 문자열로 이어 한 번에(o) 반복문 활용한(x) 출력
+e.g. StringBuilder 사용
 
 ## References
 - [자바로 백준 풀 때의 팁 및 주의점 (boj java)](https://nahwasa.com/m/172)
+- [백준 문제 자바로 풀 때 유의사항](https://blog.naver.com/chltmddus23/221696297647)
 - [<취준> 코딩테스트 준비하기 (with. 백준 & 프로그래머스)](https://haesoo9410.tistory.com/351)

@@ -23,7 +23,7 @@ public class DfsSample {
 
     // 멤버 메서드
     public void dfs(int cnt, int num) {
-        if (cnt == 0)  return;
+        if (cnt == 0) return;
 
         num *= 10;
         if (num >= n) return;
@@ -32,7 +32,7 @@ public class DfsSample {
             int tmp = num + arr[i];
             if (tmp > n) continue;
             if (tmp > max) max = tmp;
-            dfs(cnt +1, tmp);
+            dfs(cnt + 1, tmp);
         }
     }
 
@@ -43,7 +43,7 @@ public class DfsSample {
         k = Integer.parseInt(st.nextToken());
         arr = new int[k];
 
-        st = new StringTokenizer(br.readLine());
+        st = new StringTokenizer(br.readLine()); // 2022.11.21(월) 11h25 나의 질문 = 여기서 이렇게 다시 생성자로 초기화/대입해줘야 하는 이유는 무엇인가?(블로그 댓글 질문 남김)
         for (int i = 0; i < k; i++) arr[i] = Integer.parseInt(st.nextToken());
 
         dfs(0, 0);
