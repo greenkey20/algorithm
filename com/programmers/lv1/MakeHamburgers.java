@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public class makeHamburgers {
+public class MakeHamburgers {
     // 2022.11.17(목) 2h25
     public int solutionDraft1(int[] ingredients) {
         int answer = 0;

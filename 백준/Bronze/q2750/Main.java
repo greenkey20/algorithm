@@ -1,3 +1,5 @@
+package 백준.Bronze.q2750;
+
 import java.io.*;
 
 public class Main {
