@@ -1,13 +1,11 @@
 package com.programmers.lv1;
 
-import java.util.Arrays;
-import java.util.Comparator;
+import java.util.*;
+import java.util.stream.Collectors;
 
 // 2022.11.27(일) 0h50
 public class SortStrings {
     public String[] solution(String[] strings, int n) {
-//        String[] answer = new String[strings.length];
-
         /*
         Arrays.sort(strings, new Comparator<String>() {
             @Override
@@ -24,11 +22,30 @@ public class SortStrings {
         });
          */
 
-        // 2022.11.27(일) 23h50 Arrays.sort() 오버라이딩 말고, 로직 한 줄 한 줄 구현해보자
+        // 2022.11.27(일) 23h50 v3 Arrays.sort() 오버라이딩 말고, 로직 한 줄 한 줄 구현해보자 -> 2022.11.28(월) 0h20 제출/테스트해 보니, 중복 값이 list에 담길 수 있음을 내가 충분히 고민하지 않았음을 알게 됨
         // '질문하기' 잠깐 훑어보고 얻은 아이디어 = strings 배열을 sort한 다음, n번째 글자 비교해서 정렬 수정
         Arrays.sort(strings);
+//        String[] answer = new String[strings.length];
 
-        return strings;
+        List<String> answerList = new ArrayList<>();
+
+        for (int i = 0; i < strings.length - 1; i++) {
+            String o1 = strings[i];
+            String o2 = strings[i + 1];
+
+            char c1 = o1.charAt(n);
+            char c2 = o2.charAt(n);
+
+            if (c1 > c2) {
+                answerList.add(o2);
+                answerList.add(o1);
+            } else {
+                answerList.add(o1);
+                answerList.add(o2);
+            }
+        }
+
+        return answerList.toArray(new String[strings.length]);
     }
 
     public static void main(String[] args) {
