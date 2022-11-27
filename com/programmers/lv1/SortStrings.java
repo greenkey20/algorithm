@@ -22,11 +22,12 @@ public class SortStrings {
         });
          */
 
-        // 2022.11.27(일) 23h50 v3 Arrays.sort() 오버라이딩 말고, 로직 한 줄 한 줄 구현해보자 -> 2022.11.28(월) 0h20 제출/테스트해 보니, 중복 값이 list에 담길 수 있음을 내가 충분히 고민하지 않았음을 알게 됨
+        // 2022.11.27(일) 23h50 v3 Arrays.sort() 오버라이딩 말고, 로직 한 줄 한 줄 구현해보자 -> 2022.11.28(월) 0h20 제출/테스트해 보니, 중복 값이 list에 담길 수 있음(입/출력예시1 ["car","bed","car","sun"], 2 ["abcd","abce","abce","cdx"])을 내가 충분히 고민하지 않았음을 알게 됨
         // '질문하기' 잠깐 훑어보고 얻은 아이디어 = strings 배열을 sort한 다음, n번째 글자 비교해서 정렬 수정
-        Arrays.sort(strings);
+        Arrays.sort(strings); // strings 배열의 원소들을 오름차순으로 정렬해둠
 //        String[] answer = new String[strings.length];
 
+        /*
         List<String> answerList = new ArrayList<>();
 
         for (int i = 0; i < strings.length - 1; i++) {
@@ -46,6 +47,37 @@ public class SortStrings {
         }
 
         return answerList.toArray(new String[strings.length]);
+         */
+
+        // 2022.11.28(월) 0h35 v4 아이디어 다시 정리해서 다시 코딩
+        // map 하나 만들어서 오름차순 순서(key)-strings[i] 원소의 n번째 글자(value)를 담아둠
+        Map<Integer, Character> nMap = new HashMap<>();
+
+        for (int i = 0; i < strings.length; i++) {
+            nMap.put(i, strings[i].charAt(n));
+//            System.out.println(nMap);
+        }
+
+        // map의 key-value 쌍을 list로 만듦 -> value 값의 오름차순으로 정렬
+        // google "자바 map 정렬" -> https://ponyozzang.tistory.com/404 문법 및 코드 참고
+        List<Map.Entry<Integer, Character>> listEntries = new ArrayList<>(nMap.entrySet());
+//        System.out.println(listEntries); // [0=e, 1=a, 2=u]
+
+        Collections.sort(listEntries, new Comparator<Map.Entry<Integer, Character>>() {
+            @Override
+            public int compare(Map.Entry<Integer, Character> o1, Map.Entry<Integer, Character> o2) {
+                return o1.getValue().compareTo(o2.getValue());
+            }
+        });
+//        System.out.println(listEntries); // [1=a, 0=e, 2=u]
+
+        // 이 메서드의 반환 자료(String 배열) 변수 하나 만듦
+        String[] answer = new String[strings.length];
+        for (int i = 0; i < answer.length; i++) {
+            answer[i] = strings[listEntries.get(i).getKey()]; // n번째 글자의 오름차순으로 정렬된 listEntries의 key 값 = strings 배열에서의 위치/인덱스 -> listEntries가 정렬된 순서대로 strings 배열에서 단어 꺼내서 answer 정렬에 담음
+        }
+
+        return answer;
     }
 
     public static void main(String[] args) {
