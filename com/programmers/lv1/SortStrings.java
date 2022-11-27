@@ -87,4 +87,64 @@ public class SortStrings {
         output = new SortStrings().solution(new String[]{"abce", "abcd", "cdx"}, 2);
         System.out.println(Arrays.toString(output)); // [abcd, abce, cdx]
     }
+
+    /* 회고
+    1. 몸과 마음이 피곤한/약한 상태에서 + 입/출력 예시가 간단한 사례라서 깊은 고민을 안 하고 좀 무작정 코딩을 했다 vs 겸손하되, 긍정적/적극적 태도를 가지고, 문제에 한 단계씩 차분하게 접근하자, please T.T
+    2. '질문하기' 게시판에서 힌트 얻기, 구글링('java 문제명') 찬스를 중간중간 2번 썼다 -> 구글링 결과(reference1)를 보고 그냥 따라서 칠까 하다가, 내 나름대로 조금 더 고민해서 구현하고 통과해서(v4) 뿌듯하다
+    3. Comparator를 실제로 처음 써 보게 되었는데, 유용한 것 같지만, 아직 공부를 많이 한 게 아니라서 코드 및 동작 이해 못했다
+    4. reference1 = n번째 글자를 strings 요소의 맨 앞에 붙여서 정렬 + 맨 앞에 붙인 그 n번째 글자를 떼서 answer 배열 만들기
+    5. reference2 = 나의 v1/2와 같이 Arrays.sort() 재정의
+    6. reference3 = Stream API 활용
+     */
+
+    public String[] solutionReference1(String[] strings, int n) {
+        String[] answer = {};
+        ArrayList<String> arr = new ArrayList<>();
+        for (int i = 0; i < strings.length; i++) {
+            arr.add("" + strings[i].charAt(n) + strings[i]);
+        }
+        Collections.sort(arr);
+        answer = new String[arr.size()];
+        for (int i = 0; i < arr.size(); i++) {
+            answer[i] = arr.get(i).substring(1, arr.get(i).length());
+        }
+        return answer;
+    }
+
+    public String[] solutionReference2(String[] strings, int n) {
+        Arrays.sort(strings, new Comparator<String>() {
+            @Override
+            public int compare(String s1, String s2) {
+                if (s1.charAt(n) > s2.charAt(n)) return 1;
+                else if (s1.charAt(n) == s2.charAt(n)) return s1.compareTo(s2);
+                else if (s1.charAt(n) < s2.charAt(n)) return -1;
+                else return 0;
+            }
+        });
+        return strings;
+    }
+
+    public String[] solutionReference3(String[] strings, int n) {
+        return Arrays.stream(strings).map(string -> new IndexString(string, n)).sorted()
+                .map(indexString -> indexString.string).toArray(String[]::new);
+    }
+
+    class IndexString implements Comparable<IndexString> {
+        String string;
+        char index;
+
+        IndexString(String string, int index) {
+            this.string = string;
+            this.index = string.charAt(index);
+        }
+
+        public int compareTo(IndexString indexString) {
+            System.out.println(index + "," + indexString.index);
+            if (index == indexString.index) {
+                return string.compareTo(indexString.string);
+            } else {
+                return index - indexString.index;
+            }
+        }
+    }
 }
