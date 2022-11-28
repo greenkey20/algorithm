@@ -29,7 +29,8 @@ cf. 예시 코드 DfsSample.java 참고
 3. 입력을 위한, System.in이 들어간, 클래스는 하나만 쓰기 
 - 백준 입력 = 파일 → 일정량을 읽어들인 후 사용자의 요청(readLine() 등)에 따라 해당 버퍼에서 꺼내옴 → 여러 개 선언해두면 이미 다른 클래스에서 버퍼에 쌓인 부분 때문에 제대로 읽을 수 없게 됨
 
-cf. 예시 코드 InputCodes.java 참고
+cf1. 예시 코드 InputCodes.java 참고
+cf2. 문자열 "1 2"와 같은 입력을 정수 2개로 변환해서 받고자 할 때 NumberFormat 런타임 에러 발생하지 않도록 입력 받는 법 = https://help.acmicpc.net/judge/rte/NumberFormat
 
 ### ✅ 효율적인 출력
 하나의 문자열로 이어 한 번에(o) 반복문 활용한(x) 출력
