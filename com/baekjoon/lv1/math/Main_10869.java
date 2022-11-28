@@ -8,8 +8,11 @@ import java.io.InputStreamReader;
 public class Main_10869 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int A = Integer.parseInt(br.readLine());
-        int B = Integer.parseInt(br.readLine());
+
+        // v2 입력 방식 수정
+        String[] strs = br.readLine().split(" ");
+        int A = Integer.parseInt(strs[0]);
+        int B = Integer.parseInt(strs[1]);
 
         System.out.println(A + B);
         System.out.println(A - B);
