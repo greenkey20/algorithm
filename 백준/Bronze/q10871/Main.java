@@ -1,3 +1,5 @@
+package 백준.Bronze.q10871;
+
 import java.io.*;
 import java.util.Arrays;
 

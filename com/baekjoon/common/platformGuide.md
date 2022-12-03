@@ -1,7 +1,7 @@
 # 백준 Java 풀이 시 tips/guide
 
 ## 1. public class 이름은 Main이어야 함
-- 백준.Bronze.q2750.백준.Bronze.q2557.백준.Bronze.q2588.백준.Bronze.q10869.Main 이외의 클래스를 써야 하는 경우, public이 아닌 클래스나 inner 클래스로 만들어서 사용
+- 백준.Bronze.q2750.백준.Bronze.q2557.백준.Bronze.q2588.백준.Bronze.q10869.백준.Bronze.q2753.백준.Bronze.q10871.Main 이외의 클래스를 써야 하는 경우, public이 아닌 클래스나 inner 클래스로 만들어서 사용
 
 ## 2. import 부분도 함께 제출해야 함
 

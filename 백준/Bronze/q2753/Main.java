@@ -1,3 +1,5 @@
+package 백준.Bronze.q2753;
+
 import java.io.*;
 import java.util.Scanner;
 

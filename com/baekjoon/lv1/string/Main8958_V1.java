@@ -3,7 +3,7 @@ package com.baekjoon.lv1.string;
 import java.util.Scanner;
 
 // 2022.4.30(토) 1h30
-public class Main_8958 {
+public class Main8958_V1 {
 	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -24,7 +24,7 @@ public class Main_8958 {
 			
 			/* 나의 생각 = Character.getNumericValue(char형 리터럴)의 성능 vs String.valueOf(char형 리터럴)의 성능? 
 			 */
-			
+
 			// 2022.5.2(월) 0h15 계속 풀이 -> 0h35 228ms 맞았습니다
 			String[] correct = result.split("X");
 //			System.out.println(Arrays.toString(correct));
