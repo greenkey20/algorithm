@@ -3,7 +3,7 @@ package com.baekjoon.lv1.string;
 import java.util.Scanner;
 
 // 2022.4.21(목) 23h45 단어 개수 -> 23h55 1차 제출 틀림 -> 2022.4.22(금) 0h10 508ms 맞았습니다
-public class Main_1152 {
+public class Main1152_V1 {
 	
 	public static void main(String[] args) {
 		
@@ -22,12 +22,18 @@ public class Main_1152 {
 //		System.out.println(Arrays.toString(wordArray));
 		
 		int wordCount = 0;
-		if (!wordArray[0].equals("")) {
+		if (!wordArray[0].equals("")) { // split() 함수 사용 시 이 조건이 필요한 이유 = https://st-lab.tistory.com/65
 			wordCount = wordArray.length;
 		} 
 		
 		System.out.println(wordCount);
-		
 	}
 
 }
+
+/* 문제 총평(https://st-lab.tistory.com/65)
+보면 아주 단순한 문제다.
+다만, 단순히 공백을 count 해주는 것이 아닌 예외의 케이스도 고려해야 한다는 점이 중요하다.
+자바의 경우 StringTokenizer 클래스가 있어서 이를 알고 있다면 매우 쉬운 문제였을 것이다.
+하지만 이 클래스를 몰라서 charAt()으로 반복하면서 처음과 마지막의 공백에 대하여 예외처리를 안하다보니 아무래도 정답률이 엄청 낮았던 것 같다.
+ */

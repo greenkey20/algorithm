@@ -1,3 +1,5 @@
+package 백준.Bronze.q4344;
+
 import java.io.*;
 
 // 2022.12.4(일) 6h50
