@@ -1,7 +1,7 @@
 # 백준 Java 풀이 시 tips/guide
 
 ## 1. public class 이름은 Main이어야 함
-- Main 이외의 클래스를 써야 하는 경우, public이 아닌 클래스나 inner 클래스로 만들어서 사용
+- 백준.Bronze.q11654.백준.Bronze.q1152.Main 이외의 클래스를 써야 하는 경우, public이 아닌 클래스나 inner 클래스로 만들어서 사용
 
 ## 2. import 부분도 함께 제출해야 함
 
