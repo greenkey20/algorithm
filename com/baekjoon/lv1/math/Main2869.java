@@ -26,14 +26,40 @@ public class Main2869 {
 
     // 문제 해결 로직
     public static int calculateNumOfDaysToV(int A, int B, int V) {
-        int currentPosition = 0;
+        /* 2022.12.8(목) 10h20 v2 -> 10h30 제출 시 '시간 초과' 오류
+        질문 검색 결과 "위 문제는 반복문을 사용하면 시간초과가 발생할 수 있습니다. 반복문을 사용하지 않고도 수식만으로 해결가능하니 수식을 만들어서 처리하는 것이 좋을 것 같습니다"(https://www.acmicpc.net/board/view/101559)
+         */
+//        int positionBeforeSleep = 0;
+//        int positionAfterSleep = 0;
+        /*
+        int position = 0;
         int days = 1;
+        boolean isArrival = false;
 
-        while (currentPosition < V) {
-            currentPosition = currentPosition + A - B;
+        while (!isArrival) {
+            position += A;
+
+            if (position >= V) {
+//                isArrival = true;
+                break;
+            }
+
+            position -= B;
             days++;
         }
 
         return days;
+         */
+
+        // 종이에 입/출력 예시 그림 그려서 패턴 생각해봄 -> v3 11h5 맞았습니다
+        // 하루에 올라갈 수 있는 높이(A)를 고려했을 때 실질적인 높이 = V - A
+        // 실질적으로 하루에 올라가는 높이 = A - B
+        int realHeight = V - A;
+        int realMove = A - B;
+
+//        int days = realHeight / realMove;
+//        if (V - realHeight * realMove <= A) days++;
+
+        return (int) Math.ceil((double) realHeight / realMove) + 1;
     }
 }
