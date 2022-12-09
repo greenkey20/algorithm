@@ -1,3 +1,5 @@
+package 백준.Bronze.q10872;
+
 import java.io.*;
 
 // 2022.12.8(목) 11h5 -> 11h15 아직 v1 작성 중
