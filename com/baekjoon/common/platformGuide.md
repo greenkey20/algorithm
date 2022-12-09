@@ -1,7 +1,7 @@
 # 백준 Java 풀이 시 tips/guide
 
 ## 1. public class 이름은 Main이어야 함
-- 백준.Bronze.q11654.백준.Bronze.q1152.Main 이외의 클래스를 써야 하는 경우, public이 아닌 클래스나 inner 클래스로 만들어서 사용
+그 외의 클래스를 써야 하는 경우, public이 아닌 클래스나 inner 클래스로 만들어서 사용
 
 ## 2. import 부분도 함께 제출해야 함
 
@@ -9,7 +9,7 @@
 cf. 예시 코드 DfsSample.java 참고
 
 ## 4. 입력 받는 것부터 출력하는 부분까지 작성해야 함
-- 템플릿 만들어서 '프로그래머스'에서와 비슷하게 문제를 풀 수 있도록 하기
+템플릿 만들어서 '프로그래머스'에서와 비슷하게 문제를 풀 수 있도록 하기
 
 ### ✅ 효율적인 입력 = BufferedReader 및 StringTokenizer로 빠르게 입력받기
 1. Scanner는 느림 → **BufferReader 사용하기**

@@ -2,7 +2,7 @@ package com.baekjoon.lv1.recursion;
 
 import java.io.*;
 
-// 2022.12.8(목) 11h5 -> 11h15 아직 v1 작성 중
+// 2022.12.8(목) 11h5 -> 11h15 아직 v1 작성 중 -> 2022.12.9(금) 10h35 다시 와서 보니 재귀 로직 이상 없는 것 같아 제출 = 맞았습니다 -> 10h40 memoization으로 효율화 시켜보자
 public class Main10872 {
     public static void main(String[] args) throws IOException {
         // 입력
@@ -25,6 +25,6 @@ public class Main10872 {
         if (N <= 1) return 1;
 
         // 문제가 더 작은 단위로 쪼개지는 경우
-        return calculateNFactorial(N - 1) * N;
+        return N * calculateNFactorial(N - 1);
     }
 }

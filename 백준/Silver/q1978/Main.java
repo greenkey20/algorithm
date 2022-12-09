@@ -1,3 +1,5 @@
+package 백준.Silver.q1978;
+
 import java.util.*;
 
 public class Main {
