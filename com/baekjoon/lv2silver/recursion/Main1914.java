@@ -8,6 +8,8 @@ e.g. 호출 1 = 목적지가 아닌곳( n-1, 즉 하나 적은 원반들을 목�
 스타트 포인트에서 맨 아래에 남은 원반을 목적지로 옮기기
 호출 2 = 임시 목적지에 있는걸 목적지로 옮기기
 아아 장장 3시간만에 이해가 조금씩 갑니다 ㅠㅠㅠ.. 감격
+
+2022.12.10(토) 23h30 Eddie’s tips = stack<Integer> 3개 A~C 만들고, 1~N(입력받은 정수)과 같은 원소들을 가지고, stack 간 이동시켜보는 코드 써보기
  */
 public class Main1914 {
     public static void main(String[] args) {
