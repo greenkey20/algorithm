@@ -1,3 +1,5 @@
+package 백준.Bronze.q1110;
+
 import java.io.*;
 
 // 2022.12.12(월) 23h35
