@@ -30,16 +30,18 @@ public class Main4673 {
         bw.close();
     }
 
+    // 2022.12.14(수) 12h55 이어서 생각해봄 -> 13h5 제출 시 '출력 초과' + 실행해 보니 1~10000 모든 숫자가 출력됨
     public static void getListOfSelfNums(ArrayList<Integer> listOfNums) {
         for (int i = 0; i < listOfNums.size(); i++) {
             int n = listOfNums.get(i);
             int derivativeOfN = n;
 
-            while (n / 10 > 0) {
-                derivativeOfN += n / 10;
+            while (n > 0) {
+                derivativeOfN += n % 10;
+                n = n / 10;
             }
 
-            listOfNums.remove(derivativeOfN);
+            listOfNums.remove(derivativeOfN); // 이 메서드 설명 다시 읽어보니 매개변수로 주어진 수의 위치에 있는 요소를 삭제하는 것임 != 내가 의도한 것
         }
     }
 }
