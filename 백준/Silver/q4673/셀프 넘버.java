@@ -1,3 +1,5 @@
+package 백준.Silver.q4673;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -6,7 +8,7 @@ import java.util.LinkedList;
 
 // 2022.12.13(화) 0h30 -> 0h55 일단 v1 = 1~1만 모든 숫자가 출력됨
 // 종이에 d(1), d(2), d(3), .. 써가며 self number 개념 이해
-public class Main {
+class Main {
     static boolean[] isDerivationOfN = new boolean[10000]; // 2022.12.14(수) 13h15 v3 여전히 1~10000 모든 숫자가 출력되는데, 어느 부분이 문제인지 잘 모르겠음 = 이건 내가 getListOfSelfNums() 함수 호출을 안 해서
 
     public static void main(String[] args) throws IOException {
