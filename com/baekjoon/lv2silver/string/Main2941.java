@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-// 2022.12.14(수) 13h50 v1 제대로 동작 안 함, 테스트케이스들 종이에 써가며 더 정교하게 짜보자.. -> 2022.12.15(목) 2h25 다시 시도했으나, 잘 모르겠음 -> 2h55 검색해보기로 함
+// 2022.12.14(수) 13h50 v1 제대로 동작 안 함, 테스트케이스들 종이에 써가며 더 정교하게 짜보자.. -> 2022.12.15(목) 2h25 다시 시도했으나, 잘 모르겠음 -> 2h55 검색해보기로 함 + v2 '틀렸습니다'(반례는 c=c=와 같이 크로아티아 알파벳 1개가 2번 이상 나올 때)
 public class Main2941 {
     public static void main(String[] args) throws IOException {
         // 입력
@@ -22,25 +22,29 @@ public class Main2941 {
     public static int countCroatianAlphabets(String word) {
         List<String> croatianAlphabets = List.of("c=", "c-", "dz=", "d-", "lj", "nj", "s=", "z=");
 
-        StringBuilder sb = new StringBuilder(word);
+//        StringBuilder sb = new StringBuilder(word);
 
+        // 2022.12.17(토) 6h50 v3
         for (int i = 0; i < croatianAlphabets.size(); i++) {
             String str = croatianAlphabets.get(i);
 
-            if (sb.indexOf(str) != -1) {
-                int begin = word.indexOf(str);
-                sb.replace(begin, begin + str.length(), "*");
+            if (word.indexOf(str) != -1) {
+//                int begin = word.indexOf(str);
+                word = word.replace(str, "*");
             }
 
-            System.out.println("str = " + str + ", sb = " + sb);
+            System.out.println("str = " + str + ", word = " + word);
         }
 
-        return sb.length();
+        return word.length();
     }
 }
 
+/* 회고
+1. String의 성질/특성에 대해 제대로 공부해두자
+2. String.replace()한 결과를 변수에 담지 않아 '왜 안 되지?' 한 순간이 2번 이상된다..
 
-/* ideation
+ideation
 int result = 0;
 
 StringBuilder sb = new StringBuilder();
