@@ -47,16 +47,34 @@ public class Main1051 {
 
         int result = 1;
 
-        // 2022.11.22(목) 23h45 입/출력예시5로 디버깅 -> 가로/세로로 긴 직사각형 경우 나눠야 할 것 같음..
-        for (int i = smaller; i > 1; i--) {
-            for (int j = 0; j <= bigger - smaller; j++) {
-                int topLeft = numbers[smaller - i][j];
-                int topRight = numbers[smaller - i][j + smaller - 1];
-                int bottomLeft = numbers[i - 1][j];
-                int bottomRight = numbers[i - 1][j + smaller - 1];
+        /* 2022.12.22(목) 23h45 입/출력예시5로 디버깅 -> 가로/세로로 긴 직사각형 경우 나눠야 할 것 같음..
+        2022.12.23(금) 0h30 현재 버전으로 제대로 동작 안 함 + 정사각형이 작아질 때 상하좌우로 모두 움직이도록 구현하지 않음
+         */
 
-                if (topLeft == topRight && topRight == bottomLeft && bottomLeft == bottomRight) {
-                    return i * i;
+        if (N < M) {
+            for (int i = smaller; i > 1; i--) {
+                for (int j = 0; j <= bigger - smaller; j++) {
+                    int topLeft = numbers[smaller - i][j];
+                    int topRight = numbers[smaller - i][j + smaller - 1];
+                    int bottomLeft = numbers[i - 1][j];
+                    int bottomRight = numbers[i - 1][j + smaller - 1];
+
+                    if (topLeft == topRight && topRight == bottomLeft && bottomLeft == bottomRight) {
+                        return i * i;
+                    }
+                }
+            }
+        } else {
+            for (int i = smaller; i > 1; i--) {
+                for (int j = 0; j <= bigger - i; j++) {
+                    int topLeft = numbers[j][smaller - i];
+                    int topRight = numbers[j + smaller - 1][smaller - i];
+                    int bottomLeft = numbers[j][i - 1];
+                    int bottomRight = numbers[j + smaller - 1][i - 1];
+
+                    if (topLeft == topRight && topRight == bottomLeft && bottomLeft == bottomRight) {
+                        return i * i;
+                    }
                 }
             }
         }
