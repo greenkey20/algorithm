@@ -47,6 +47,7 @@ public class Main1051 {
 
         int result = 1;
 
+        // 2022.11.22(목) 23h45 입/출력예시5로 디버깅 -> 가로/세로로 긴 직사각형 경우 나눠야 할 것 같음..
         for (int i = smaller; i > 1; i--) {
             for (int j = 0; j <= bigger - smaller; j++) {
                 int topLeft = numbers[smaller - i][j];
