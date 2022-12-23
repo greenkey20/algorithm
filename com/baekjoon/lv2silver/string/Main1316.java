@@ -29,6 +29,11 @@ public class Main1316 {
         int result = 0;
 
         for (int i = 0; i < words.length; i++) {
+            if (words[i].length() == 1) { // 2022.12.23(금) 21h35 입/출력예시2로 돌려보니 이 경우 처리 안 했음을 깨닫게 됨 -> 21h40 맞았습니다
+                result++;
+                continue;
+            }
+
             Set<Character> alphabets = new HashSet<>();
 
             for (int j = 0; j < words[i].length() - 1; j++) {
