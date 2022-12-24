@@ -8,7 +8,7 @@ import java.util.*;
 // 2022.12.24(토) 4h50 문제 읽음
 // 입력으로 주어진 숫자 하나하나 읽으며 set에 담고, set에 있으면 새로운 세트 만듦(단, 6이나 9인 경우 set에 있다면 각각 9/6으로 바꿔서 set에 있는지 다시 검사) -> set를 담는 list를 만들고, 최종적으로 그 list의 size를 반환
 public class Main1475 {
-    // 2022.12.24(토) 19h15 구현 시작 -> 입/출력 예시는 다 통과했지만 19h35 제출 시 틀렸습니다 -> 반례 9999444로 디버깅 -> 20h15 틀렸습니다 -> 888888 입력으로 기대값 6 vs 나의 결과 5
+    // 2022.12.24(토) 19h15 구현 시작 -> 입/출력 예시는 다 통과했지만 19h35 제출 시 틀렸습니다 -> 반례 9999444로 디버깅 -> 20h15 틀렸습니다 -> 888888 입력으로 기대값 6 vs 나의 결과 5 -> 수정 후 20h25 맞았습니다!
     public static void main(String[] args) throws IOException {
         // 입력
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -32,7 +32,7 @@ public class Main1475 {
         for (int i = 0; i < strN.length(); i++) {
             int num = Character.getNumericValue(strN.charAt(i));
 
-            for (int j = 0; j < strN.length() - 1; j++) {
+            for (int j = 0; j < strN.length(); j++) {
                 HashSet<Integer> thisSet = list.get(j);
 
                 if (!thisSet.contains(num)) {
