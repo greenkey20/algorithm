@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -40,43 +41,68 @@ public class Main11723 {
      * @param commands 명령의 집합
      */
     public static void doSetOperation(ArrayList<String[]> commands) {
-        Set<Integer> set = new HashSet<>();
+        // v1
+//        Set<Integer> set = new HashSet<>();
+        // v2 bit masking 응용 = 총 20개의 요소를 갖는 int형 배열 선언 및 초기화(default value 0)
+        int[] set = new int[20];
 
         for (int i = 0; i < commands.size(); i++) {
             String operator = commands.get(i)[0];
             Integer operand = 0;
             if (!operator.equals("all") && !operator.equals("empty")) {
-                operand = Integer.parseInt(commands.get(i)[1]);
+                operand = Integer.parseInt(commands.get(i)[1]) - 1;
             }
 
             switch (operator) {
                 case "add":
-                    set.add(operand);
+//                    set.add(operand);
+                    set[0 << operand] = 1; // 3h55 나의 질문 = 왜 0 << operand가 항상 0의 값을 갖지?
+                    System.out.println(Arrays.toString(set));
                     break;
                 case "remove":
-                    set.remove(operand);
+//                    set.remove(operand);
+                    set[0 << operand] = 0;
                     break;
                 case "check":
+                    /*
                     if (set.contains(operand)) {
+                        System.out.println(1);
+                    } else {
+                        System.out.println(0);
+                    }
+                     */
+                    if (set[0 << operand] == 1) {
                         System.out.println(1);
                     } else {
                         System.out.println(0);
                     }
                     break;
                 case "toggle":
+                    /*
                     if (set.contains(operand)) {
                         set.remove(operand);
                     } else {
                         set.add(operand);
                     }
+                     */
+                    if (set[0 << operand] == 1) {
+                        set[0 << operand] = 0;
+                    } else {
+                        set[0 << operand] = 1;
+                    }
                     break;
                 case "all":
                     for (int j = 1; j <= 20; j++) {
-                        set.add(j);
+//                        set.add(j);
+                        set[0 << operand] = 1;
                     }
                     break;
                 case "empty":
-                    set.clear();
+//                    set.clear();
+                    for (int j = 1; j <= 20; j++) {
+//                        set.add(j);
+                        set[0 << operand] = 0;
+                    }
             }
         }
 
