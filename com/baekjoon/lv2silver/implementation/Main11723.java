@@ -4,21 +4,24 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
-// 2022.12.25(금) 23h20
+// 2022.12.25(일) 23h20 -> 2022.12.26(월) 2h40 이어서 풀이 -> 2h55 제출 시 '메모리 초과' -> 'bit masking' 구글링/공부
 public class Main11723 {
     public static void main(String[] args) throws IOException {
         // 입력
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int M = Integer.parseInt(br.readLine());
-        ArrayList<String[]> orders = new ArrayList<>(M);
+        ArrayList<String[]> commands = new ArrayList<>(M);
 
         for (int i = 0; i < M; i++) {
-            orders.add(br.readLine().split(" "));
+            commands.add(br.readLine().split(" "));
         }
 
         // 문제 해결 로직
+        doSetOperation(commands);
 
         // 출력
 
@@ -33,11 +36,48 @@ public class Main11723 {
      * toggle x: S에 x가 있으면 x를 제거하고, 없으면 x를 추가한다. (1 ≤ x ≤ 20)
      * all: S를 {1, 2, ..., 20} 으로 바꾼다.
      * empty: S를 공집합으로 바꾼다.
-     * @param orders
+     *
+     * @param commands 명령의 집합
      */
-    public static void doSetOperation(ArrayList<String[]> orders) {
-        for (int i = 0; i < orders.size(); i++) {
-            String[] order = orders.get(i);
+    public static void doSetOperation(ArrayList<String[]> commands) {
+        Set<Integer> set = new HashSet<>();
+
+        for (int i = 0; i < commands.size(); i++) {
+            String operator = commands.get(i)[0];
+            Integer operand = 0;
+            if (!operator.equals("all") && !operator.equals("empty")) {
+                operand = Integer.parseInt(commands.get(i)[1]);
+            }
+
+            switch (operator) {
+                case "add":
+                    set.add(operand);
+                    break;
+                case "remove":
+                    set.remove(operand);
+                    break;
+                case "check":
+                    if (set.contains(operand)) {
+                        System.out.println(1);
+                    } else {
+                        System.out.println(0);
+                    }
+                    break;
+                case "toggle":
+                    if (set.contains(operand)) {
+                        set.remove(operand);
+                    } else {
+                        set.add(operand);
+                    }
+                    break;
+                case "all":
+                    for (int j = 1; j <= 20; j++) {
+                        set.add(j);
+                    }
+                    break;
+                case "empty":
+                    set.clear();
+            }
         }
 
     }
