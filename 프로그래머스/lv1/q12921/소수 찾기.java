@@ -1,3 +1,5 @@
+package 프로그래머스.lv1.q12921;
+
 class Solution {
     public int solution(int n) {
         int answer = 0;

@@ -1,3 +1,5 @@
+package 프로그래머스.lv1.q12919;
+
 class Solution {
     // 2022.12.29(목) 0h25
     public String solution(String[] seoul) {

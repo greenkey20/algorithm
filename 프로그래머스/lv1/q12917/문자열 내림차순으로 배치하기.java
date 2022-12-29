@@ -1,3 +1,5 @@
+package 프로그래머스.lv1.q12917;
+
 import java.util.*;
 
 class Solution {
