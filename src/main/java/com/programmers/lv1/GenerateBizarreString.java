@@ -1,7 +1,7 @@
 package com.programmers.lv1;
 
 public class GenerateBizarreString {
-    /* 2022.12.30(금) 5h50 -> 6h5 제출 시 테스트케이스 반 정도 통과 못함 -> 2022.12.31(토) 4h50 다시 풀어보기
+    /* 2022.12.30(금) 5h50 -> 6h5 제출 시 테스트케이스 반 정도 통과 못함 -> 2022.12.31(토) 4h50 다시 풀어보기 -> 1시간 고민/작성 후 제출 시 테스트케이스 3개만 통과
     게시판 tip = 단어 사이 공백이 여러 개 + 문자의 시작과 끝에 공백 + 단어에 대문자가 섞여있는 경우 e.g. "  tRy hello  WORLD    "
      */
     public static String solution(String s) {
