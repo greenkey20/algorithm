@@ -34,9 +34,9 @@ cf2. 문자열 "1 2"와 같은 입력을 정수 2개로 변환해서 받고자 �
 
 ### ✅ 효율적인 출력
 1. 하나의 문자열로 이어 한 번에(o) 반복문 활용한(x) 출력
-e.g. StringBuilder 사용
+e.g. StringBuilder 사용 e.g. lv1Bronze q2750
 
-2. BufferedWriter 사용
+2. BufferedWriter 사용 e.g. lv1Bronze q4344/q10872
 
 > [**백준 출력 속도 비교**](https://www.acmicpc.net/blog/view/57) : 총 N개의 줄에 1부터 10,000,000까지의 자연수를 한 줄에 하나씩 출력하는 시간을 10번 측정해서 평균 값을 낸 것<br>
 > Java BufferedWriter bf.write(i + "\n") 평균 0.9581초<br>
