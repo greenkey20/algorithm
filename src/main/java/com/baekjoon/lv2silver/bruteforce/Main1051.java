@@ -27,7 +27,7 @@ public class Main1051 {
                 idx++;
             }
         }
-        System.out.println(Arrays.deepToString(numbers));
+//        System.out.println(Arrays.deepToString(numbers));
         // 이상 입력받은 수들을 N * M 크기의 int형 배열에 담음
 
         // 문제 해결 로직
@@ -36,7 +36,7 @@ public class Main1051 {
         System.out.println(getLargestSquare(N, M, numbers));
     }
 
-    public static int getLargestSquare(int N, int M, int[][] numbers) {
+    public static int getLargestSquareDraft(int N, int M, int[][] numbers) {
         int smaller = N;
         int bigger = M;
 
@@ -76,6 +76,29 @@ public class Main1051 {
                     }
                 }
             }
+        }
+
+        return result;
+    }
+
+    // 2023.1.2(월) 7h50 구글링으로 레퍼런스 찾아(https://code-lab1.tistory.com/70) 읽어본 뒤, 8h5 이해한 내용을 직접 작성해보기 -> 8h20 맞았습니다
+    public static int getLargestSquare(int N, int M, int[][] numbers) {
+        int result = 1;
+        int len = Math.min(N, M);
+
+        while (len > 1) {
+            for (int i = 0; i <= N - len; i++) {
+                for (int j = 0; j <= M - len; j++) {
+                    int topLeft = numbers[i][j];
+
+                    if (topLeft == numbers[i][j + len - 1] && topLeft == numbers[i + len - 1][j] && topLeft == numbers[i + len - 1][j + len - 1]) {
+                        result = len * len;
+                        return result;
+                    }
+                }
+            }
+
+            len--;
         }
 
         return result;
