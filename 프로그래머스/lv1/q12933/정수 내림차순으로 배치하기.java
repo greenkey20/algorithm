@@ -1,3 +1,5 @@
+package lv1.q12933;
+
 import java.util.*;
 
 class Solution {

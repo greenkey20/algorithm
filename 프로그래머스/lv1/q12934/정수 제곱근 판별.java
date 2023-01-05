@@ -1,3 +1,5 @@
+package lv1.q12934;
+
 class Solution {
     // 2023.1.5(목) 6h55
     public long solution(long n) {
