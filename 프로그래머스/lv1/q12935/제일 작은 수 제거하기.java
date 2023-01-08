@@ -1,3 +1,5 @@
+package lv1.q12935;
+
 class Solution {
     // 2023.1.6(금) 7h20
     public int[] solution(int[] arr) {
