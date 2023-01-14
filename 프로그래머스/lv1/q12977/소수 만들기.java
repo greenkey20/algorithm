@@ -1,3 +1,5 @@
+package lv1.q12977;
+
 class Solution {
     // 2023.1.7(토) 17h35
     public int solution(int[] nums) {

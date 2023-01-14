@@ -1,3 +1,5 @@
+package lv1.q12947;
+
 class Solution {
     // 2023.1.7(토) 17h15
     public boolean solution(int x) {

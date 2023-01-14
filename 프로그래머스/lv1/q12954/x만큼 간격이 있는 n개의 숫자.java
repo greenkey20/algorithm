@@ -1,3 +1,5 @@
+package lv1.q12954;
+
 class Solution {
     // 2023.1.7(토) 17h30
     public long[] solution(int x, int n) {

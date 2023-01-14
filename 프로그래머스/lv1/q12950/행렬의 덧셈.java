@@ -1,3 +1,5 @@
+package lv1.q12950;
+
 class Solution {
     // 2023.1.7(토) 17h25
     public int[][] solution(int[][] arr1, int[][] arr2) {

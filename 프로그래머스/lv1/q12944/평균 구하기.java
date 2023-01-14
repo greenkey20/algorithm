@@ -1,3 +1,5 @@
+package lv1.q12944;
+
 class Solution {
     public double solution(int[] arr) {
         double answer = 0;

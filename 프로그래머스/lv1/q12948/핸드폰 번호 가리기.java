@@ -1,3 +1,5 @@
+package lv1.q12948;
+
 class Solution {
     // 2023.1.14(토) 23h55
     public String solution(String phone_number) {
