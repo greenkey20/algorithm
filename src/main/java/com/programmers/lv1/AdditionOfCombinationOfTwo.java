@@ -14,6 +14,7 @@ public class AdditionOfCombinationOfTwo {
             }
         }
 
+        /*
         Object[] answerSetToArray = answerSet.toArray();
         int[] answer = new int[answerSetToArray.length];
 
@@ -22,6 +23,10 @@ public class AdditionOfCombinationOfTwo {
         }
 
         return answer;
+         */
+
+        // 다른 사람들의 풀이로부터 배운 Stream 활용
+        return answerSet.stream().sorted().mapToInt(num -> num).toArray();
     }
 
     public static void main(String[] args) {
