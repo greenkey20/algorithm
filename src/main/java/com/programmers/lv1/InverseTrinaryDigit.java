@@ -31,5 +31,26 @@ public class InverseTrinaryDigit {
     public static void main(String[] args) {
         System.out.println(solution(45));
         System.out.println(solution(125));
+
+        System.out.println(solutionReference(45));
+        System.out.println(solutionReference(125));
+    }
+
+    // 다른 사람들의 풀이 = Integer.parseInt(정수로 바꿀 숫자를 문자열로 쓴 것, 왼쪽 숫자가 몇 진수인지) 활용
+    public static int solutionReference(int n) {
+        String remainders = "";
+
+        while (n > 0) {
+            remainders = remainders + n % 3;
+            n /= 3; // n = n / 3;
+            System.out.println("n = " + n + ", remainders = " + remainders);
+        }
+
+        /* Params:
+            s – the String containing the integer representation to be parsed
+            radix – the radix to be used while parsing s
+        Returns: the integer represented by the string argument in the specified radix
+         */
+        return Integer.parseInt(remainders, 3);
     }
 }
