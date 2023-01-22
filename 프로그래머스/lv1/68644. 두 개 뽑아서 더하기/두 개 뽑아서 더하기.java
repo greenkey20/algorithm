@@ -11,6 +11,7 @@ class Solution {
             }
         }
 
+        /*
         Object[] answerSetToArray = answerSet.toArray();
         int[] answer = new int[answerSetToArray.length];
 
@@ -19,5 +20,9 @@ class Solution {
         }
         
         return answer;
+        */
+        
+        // 다른 사람들의 풀이로부터 배운 Stream 활용
+        return answerSet.stream().sorted().mapToInt(num -> num).toArray();
     }
 }
