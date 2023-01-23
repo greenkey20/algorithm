@@ -1,3 +1,5 @@
+package lv1.q70128;
+
 class Solution {
     public int solution(int[] a, int[] b) {
         int answer = 0;

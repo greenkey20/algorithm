@@ -1,3 +1,5 @@
+package lv1.q76501;
+
 class Solution {
     // 2023.1.23(월) 22h
     public int solution(int[] absolutes, boolean[] signs) {
