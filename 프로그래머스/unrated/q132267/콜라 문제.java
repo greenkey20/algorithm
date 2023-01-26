@@ -1,7 +1,7 @@
 class Solution {
     public int solution(int a, int b, int n) {
         int answer = 0;
-        
+
         int currentNumOfEmptyBottles = 0;
 
         boolean flag = true;
@@ -12,7 +12,7 @@ class Solution {
 
             if (currentNumOfEmptyBottles < a) flag = false;
         }
-        
+
         return answer;
     }
 }
