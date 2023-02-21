@@ -26,9 +26,14 @@ public class AppleBox {
 
         // 포장한 상자들을 list에 담아둠
         List<int[]> boxes = new ArrayList<>();
+        for (int i = 0; i < m * numOfBoxes; i++) {
+            int[] box = null;
 
-        for (int i = 0; i < m * numOfBoxes; i += m) {
-            int[] box = new int[m];
+            if (i % m == 0) {
+                box = new int[m];
+            } else {
+                box = boxes.get(i / m); // 18h25 v4 Index Out Of Bounds Exception
+            }
 
             // box 1개에 m개의 사과를 담음 -> 이 때 내림차순으로 정렬된 score[] 배열로부터 원소 1개씩 순차적으로 꺼내어 담음
             for (int j = 0; j < m; j++, i++) {
