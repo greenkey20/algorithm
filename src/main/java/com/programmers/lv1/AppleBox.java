@@ -26,35 +26,28 @@ public class AppleBox {
 
         // 포장한 상자들을 list에 담아둠
         List<int[]> boxes = new ArrayList<>();
-        for (int i = 0; i < m * numOfBoxes; i++) {
-            int[] box = null;
 
-            if (i % m == 0) {
-                box = new int[m];
-            } else {
-                box = boxes.get(i / m); // 18h25 v4 Index Out Of Bounds Exception
-            }
+        // 19h40 v5 상자 하나하나 포장하기 = 입/출력 예시에 대해서는 의도한 결과 도출됨 -> 그러나 제출 시 정확성 33.3% 뿐으로 '틀렸습니다' -> 19h50 나의 질문 = 반례는 무엇일까? 그 반례도 다룰 수 있도록 어떻게 추상화해야 하는 것일까?
+        for (int i = 0; i < numOfBoxes; i++) {
+            boxes.add(new int[m]);
+            int[] box = boxes.get(i);
 
             // box 1개에 m개의 사과를 담음 -> 이 때 내림차순으로 정렬된 score[] 배열로부터 원소 1개씩 순차적으로 꺼내어 담음
-            for (int j = 0; j < m; j++, i++) {
-                box[j] = scoreSortedDesc[i];
+            for (int j = 0; j < m; j++) {
+                box[j] = scoreSortedDesc[i * 3 + j];
             }
             System.out.println("이번 box의 내용물 = " + Arrays.toString(box)); // todo
-
-            // m개의 사과가 담긴 box를 boxes list에 담음
-            boxes.add(box);
         }
 
         // boxes 리스트의 원소를 하나씩 순회하며, '각 box에서 최하품(box[m - 1] 값) * m'을 answer에 더함
         for (int i = 0; i < boxes.size(); i++) {
             int[] box = boxes.get(i);
             System.out.println("boxes 리스트의 " + (i + 1) + "번째 box 내용물 = " + Arrays.toString(box)); // todo
-            answer += box[m - 1] * 3;
+            answer += box[m - 1] * m;
         }
 
         return answer;
     }
-
 
     public static void main(String[] args) {
         System.out.println(solution(3, 4, new int[]{1, 2, 3, 1, 2, 3, 1})); // 8
