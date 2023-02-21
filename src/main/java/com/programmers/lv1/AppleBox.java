@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class AppleBox {
-    // 2023.2.20(월) 20h ~ 20h35 v1 = 의도한대로 값 안 나옴 -> 2023.2.21(화) 17h50 ~ 18h v2 = 반복문 내 sout 찍어보는데 아직 의도하는대로 동작 안 함
+    // 2023.2.20(월) 20h ~ 20h35 v1 = 의도한대로 값 안 나옴 -> 2023.2.21(화) 17h50 ~ 18h v2 = 반복문 내 sout 찍어보는데 아직 의도하는대로 동작 안 함 = box에 담는 내용물의 index가 이상한 듯 -> 18h10 v3 여전히 의도한 결과x
     // score(품질)의 원소들은 1(최하품)~k(최상품) 범위의 정수들
     // 1상자에 사과를 m개씩 담아 포장
     public static int solution(int k, int m, int[] score) {
@@ -31,7 +31,7 @@ public class AppleBox {
             int[] box = new int[m];
 
             // box 1개에 m개의 사과를 담음 -> 이 때 내림차순으로 정렬된 score[] 배열로부터 원소 1개씩 순차적으로 꺼내어 담음
-            for (int j = 0; j < m; j++) {
+            for (int j = 0; j < m; j++, i++) {
                 box[j] = scoreSortedDesc[i];
             }
             System.out.println("이번 box의 내용물 = " + Arrays.toString(box)); // todo
