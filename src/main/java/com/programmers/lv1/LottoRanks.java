@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class LottoRanks {
-    // 2023.1.23(월) 22h10 -> 22h55 작성했는데, 왜 의도한대로 동작하지 않는지 아직 모르겠음
+    // 2023.1.23(월) 22h10 -> 22h55 작성했는데, 왜 의도한대로 동작하지 않는지 아직 모르겠음 -> 2023.3.23(목) 19h45 switch문 수정 후 입/출력 예시 2과 테스트 마지막 2개만 통과 못함(정확성 86.7)
     public static int[] solution(int[] lottos, int[] winNums) {
         // winNums 배열을 List<Integer>로 변환
 //        ArrayList<Integer> winNumsList = new ArrayList<Integer>(Arrays.asList(winNums));
@@ -53,29 +53,35 @@ public class LottoRanks {
         }
          */
 
+
         for (int i = 0; i < counts.length; i++) {
             int count = counts[i];
-            int rank = ranks[i]; // Variable 'rank' is assigned but never accessed -> 나의 질문 = why is this?
+            int rank = 0;
 
             switch (count) {
                 case 6:
                     rank = 1;
+                    ranks[i] = rank;
                     break;
                 case 5:
                     rank = 2;
+                    ranks[i] = rank;
                     break;
                 case 4:
                     rank = 3;
+                    ranks[i] = rank;
                     break;
                 case 3:
                     rank = 4;
+                    ranks[i] = rank;
                     break;
                 case 2:
                     rank = 5;
+                    ranks[i] = rank;
                     break;
                 case 1:
                     rank = 6;
-                    break;
+                    ranks[i] = rank; // Variable 'rank' is assigned but never accessed -> 나의 질문 = why is this?
             }
         }
 
