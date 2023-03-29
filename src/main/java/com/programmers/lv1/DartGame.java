@@ -2,7 +2,8 @@ package com.programmers.lv1;
 
 import java.util.Arrays;
 
-// 2023.3.28(화) 22h45 ~ 23h45 v1 = 테스트 6 및 7 통과 못함
+// 2023.3.28(화) 22h45 ~ 23h45 v1 = 입출력 예시 테스트 6 및 7 통과 못함, 제출 시 정확성 68.0
+// v1 회고 = 전체적인 그림 안 그리고, 무작정 타이핑으로 시작했다..
 public class DartGame {
     public static int solution(String dartResult) {
         int answer = 0;
