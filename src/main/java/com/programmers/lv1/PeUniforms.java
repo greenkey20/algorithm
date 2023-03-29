@@ -2,7 +2,7 @@ package com.programmers.lv1;
 
 import java.util.Arrays;
 
-// 2023.3.29(수) 11h25 ~ 11h45 v1 입출력 예시에 대해서는 동작하나, 채점 시 정확성 48.0 = greedy에 대해 추가 읽어보지는 않고 일단 풀어봄
+// 2023.3.29(수) 11h25 ~ 11h45 v1 입출력 예시에 대해서는 동작하나, 채점 시 정확성 48.0 = greedy에 대해 추가 읽어보지는 않고 일단 풀어봄 -> 파이썬 알고리즘 인터뷰, knou 교과서 등 읽어봄
 public class PeUniforms {
     public static int solution(int n, int[] lost, int[] reserve) {
         int answer = n - lost.length;
