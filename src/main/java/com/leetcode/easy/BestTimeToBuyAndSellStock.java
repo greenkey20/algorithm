@@ -1,4 +1,4 @@
-package com.programmers.lv1;
+package com.leetcode.easy;
 
 // 2023.3.29(수) 20h ~ 20h10 v1 문제도 정확히 이해 못 했었고, 구현도 잘못했다..
 public class BestTimeToBuyAndSellStock {
