@@ -16,8 +16,8 @@ class Solution {
             }
 
             alphabets.put(ch, i);
-        }  
-            
+        }
+
         return answer;
     }
 }
