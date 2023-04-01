@@ -8,6 +8,35 @@ import java.util.*;
 
 // 2023.3.26(일) 23h20 2023 kakao blind recruitment 기출 문제인데, 나도 작년인가 응시해서 본 적 있는 문제임
 // ~ 23h50 일단 입력 자료들을 LocalDateTime 및 map으로 만드는 것까지 함
+/* 2023.4.1(토) 22h10 ~ 22h50 v1 작성
+- 문제에서는 1달을 28일로 가정하는데, 나는 그걸 따로 안 만지고 그냥 Java time 라이브러리 사용했더니, expiryDate가 정확히 계산이 안 됨 + today와 비교가 정확하지 않음? -> 입/출력 예시 2개는 꾸역꾸역 맞췄는데, 제출 시 30.0
+- import java.time.*로 import문 썼더니 아래 오류 -> 인텔리제이에서 라이브러리 불러와진대로 제출했더니, 아래 오류는 해결 cf. 프로그래머스 컴파일러 = Java 14
+/Solution.java:10: error: cannot find symbol
+        DateTimeFormatter formatter = new DateTimeFormatterBuilder()
+        ^
+  symbol:   class DateTimeFormatter
+  location: class Solution
+/Solution.java:14: error: cannot find symbol
+                .parseDefaulting(ChronoField.SECOND_OF_MINUTE, 0)
+                                 ^
+  symbol:   variable ChronoField
+  location: class Solution
+/Solution.java:13: error: cannot find symbol
+                .parseDefaulting(ChronoField.MINUTE_OF_HOUR, 0)
+                                 ^
+  symbol:   variable ChronoField
+  location: class Solution
+/Solution.java:12: error: cannot find symbol
+                .parseDefaulting(ChronoField.HOUR_OF_DAY, 0)
+                                 ^
+  symbol:   variable ChronoField
+  location: class Solution
+/Solution.java:10: error: cannot find symbol
+        DateTimeFormatter formatter = new DateTimeFormatterBuilder()
+                                          ^
+  symbol:   class DateTimeFormatterBuilder
+  location: class Solution
+ */
 public class ExpiryDateOfPersonalInfo {
     public static int[] solution(String today, String[] terms, String[] privacies) {
         List<Integer> answer = new ArrayList<>();
@@ -21,24 +50,61 @@ public class ExpiryDateOfPersonalInfo {
                 .parseDefaulting(ChronoField.SECOND_OF_MINUTE, 0)
                 .toFormatter();
         LocalDateTime todayLdt = LocalDateTime.parse(today, formatter);
-        System.out.println(todayLdt); // todo
+        System.out.println("오늘 날짜 = " + todayLdt); // todo
 
         Map<String, Integer> termsMap = new HashMap<>();
         for (int i = 0; i < terms.length; i++) {
             String[] split = terms[i].split(" ");
             termsMap.put(split[0], Integer.parseInt(split[1]));
         }
-        System.out.println(termsMap); // todo
+        System.out.println("terms = " + termsMap); // todo
 
         Map<LocalDateTime, String> privaciesMap = new HashMap<>();
         for (int i = 0; i < privacies.length; i++) {
             String[] split = privacies[i].split(" ");
 
             LocalDateTime date = LocalDateTime.parse(split[0], formatter);
+            String info = split[1] + (i + 1);
 
-            privaciesMap.put(date, split[1]);
+            privaciesMap.put(date, info);
         }
-        System.out.println(privaciesMap); // todo
+        System.out.println("privacies = " + privaciesMap); // todo
+
+        //List<LocalDateTime> expiryDates = new ArrayList<>();
+
+        Set set = privaciesMap.entrySet();
+        Iterator it = set.iterator();
+        while (it.hasNext()) {
+            Map.Entry e = (Map.Entry) it.next();
+            String term = String.valueOf(((String) e.getValue()).charAt(0));
+
+            Integer months = termsMap.get(term);
+
+            LocalDateTime expiryDate = ((LocalDateTime) e.getKey()).plusMonths(months);
+            //expiryDates.add(expiryDate);
+            System.out.println("개인정보 유효기간 = " + expiryDate);
+
+            Integer idx = Character.getNumericValue(((String) e.getValue()).charAt(1));
+
+            if (expiryDate.isBefore(todayLdt)) {
+                answer.add(idx);
+            }
+
+            if (expiryDate.isEqual(todayLdt)) {
+                answer.add(idx);
+            }
+        }
+        /*
+        System.out.println("expiryDates = " + expiryDates); // todo
+
+        for (int i = 0; i < expiryDates.size(); i++) {
+            LocalDateTime ldt = expiryDates.get(i);
+
+            if (ldt.isAfter(todayLdt)) {
+                answer.add(i + 1);
+            }
+        }
+         */
 
         int[] answerArray = new int[answer.size()];
         for (int i = 0; i < answer.size(); i++) {
