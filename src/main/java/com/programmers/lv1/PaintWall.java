@@ -52,7 +52,7 @@ public class PaintWall {
 
             if (!sectionList.contains(i + m)) {
                 if (i + m > n) {
-                    return answer - 1;
+                    break;
                 } else {
                     i++;
                 }
