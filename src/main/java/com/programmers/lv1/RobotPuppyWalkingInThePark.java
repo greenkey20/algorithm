@@ -8,8 +8,6 @@ public class RobotPuppyWalkingInThePark {
     static int[][] parkArr = null;
 
     public static int[] solution(String[] park, String[] routes) {
-        int[] answer = new int[2];
-
         // park를 int[][]로 그리기
         parkArr = new int[park.length][park[0].length()];
         int[] start = new int[2];
@@ -31,8 +29,8 @@ public class RobotPuppyWalkingInThePark {
                 }
             }
         }
-        System.out.println(Arrays.deepToString(parkArr)); // todo
-        System.out.println(Arrays.toString(start)); // todo
+        System.out.println("parkArr = " + Arrays.deepToString(parkArr)); // todo
+        System.out.println("start = " + Arrays.toString(start)); // todo
 
         // 강아지가 routes 명령어 하나하나에 따라 움직임
         int[] maybe = new int[2];
@@ -45,37 +43,71 @@ public class RobotPuppyWalkingInThePark {
                 maybe[0] = start[0] - distance;
                 maybe[1] = start[1];
 
-                if (maybe[0] >= 0 && isOpen(maybe)) {
+                if (maybe[0] >= 0 && isOpen(start, direction, distance)) {
                     start[0] -= distance;
                 }
             } else if (direction.equals("S")) {
                 maybe[0] = start[0] + distance;
                 maybe[1] = start[1];
 
-                if (maybe[0] <= parkArr.length && isOpen(maybe)) {
+                if (maybe[0] <= parkArr.length - 1 && isOpen(start, direction, distance)) {
                     start[0] += distance;
                 }
             } else if (direction.equals("W")) {
                 maybe[0] = start[0];
                 maybe[1] = start[0] - distance;
 
-                if (maybe[0] >= 0 && isOpen(maybe)) {
+                if (maybe[0] >= 0 && isOpen(start, direction, distance)) {
+                    start[1] -= distance;
+                }
+            } else if (direction.equals("E")) {
+                maybe[0] = start[0];
+                maybe[1] = start[1] + distance;
 
+                if (maybe[1] <= parkArr[0].length - 1 && isOpen(start, direction, distance)) {
+                    start[1] += distance;
                 }
             }
 
+            System.out.println("direction = " + direction + ", distance = " + distance + ", start = " + Arrays.toString(start));
         }
 
-        return answer;
+        return start;
     }
 
-    public static boolean isOpen(int[] maybe) {
-        return parkArr[maybe[0]][maybe[1]] != 1;
+    // 2023.4.6(목) 21h35 어제에 이어 v1 수정해서 마저 작성해보기 -> 22h10 제출 시 50.0(테스트 반이 '런타임 에러' 실패)
+    public static boolean isOpen(int[] start, String direction, int distance) {
+//        int x = start[0];
+//        int y = start[1];
+        for (int i = 1; i <= distance; i++) {
+            if (direction.equals("N")) {
+                if (parkArr[start[0] - i][start[1]] == 1) return false;
+//                if (start[0] - i == -1) return false;
+            }
+
+            if (direction.equals("S")) {
+                if (parkArr[start[0] + i][start[1]] == 1) return false;
+//                if (start[0] + i == -1) return false;
+            }
+
+            if (direction.equals("W")) {
+                if (parkArr[start[0]][start[1] - i] == 1) return false;
+//                if (start[1] - i == -1) return false;
+            }
+
+            if (direction.equals("E")) {
+                if (parkArr[start[0]][start[1] + i] == 1) return false;
+//                if (start[1] + i == -1) return false;
+            }
+        }
+
+        return true;
+//        return parkArr[maybe[0]][maybe[1]] != 1;
     }
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(solution(new String[]{"SOO","OOO","OOO"}, new String[]{"E 2","S 2","W 1"})));
-        System.out.println(Arrays.toString(solution(new String[]{"SOO","OXX","OOO"}, new String[]{"E 2","S 2","W 1"})));
-        System.out.println(Arrays.toString(solution(new String[]{"OSO","OOO","OXO","OOO"}, new String[]{"E 2","S 3","W 1"})));
+        System.out.println(Arrays.toString(solution(new String[]{"SOO", "OOO", "OOO"}, new String[]{"E 2", "S 2", "W 1"})));
+        System.out.println(Arrays.toString(solution(new String[]{"SOO", "OXX", "OOO"}, new String[]{"E 2", "S 2", "W 1"})));
+        System.out.println(Arrays.toString(solution(new String[]{"OSO", "OOO", "OXO", "OOO"}, new String[]{"E 2", "S 3", "W 1"})));
     }
 }
