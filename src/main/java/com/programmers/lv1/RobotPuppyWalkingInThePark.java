@@ -5,9 +5,9 @@ import java.util.Arrays;
 // 2023.4.5(수) 23h ~ 23h30 v1 아직 완성 다 못함(공원 parkArr 그린 것과 출발점/현재 위치 설정은 잘 된 것 같음) + isOpen() 로직 잘못 생각함(maybe 도착점 뿐만 아니라, 경로에 장애물(-1) 없어야 이동 가능)
 // maybe로부터 direction 방향 1~distance만큼 움직이며, 하나하나 위치에 -1 있으면, 해당 route는 실행x vs 그걸 다 통과해서 isOpen() true 반환 받았을 때 route 실행
 public class RobotPuppyWalkingInThePark {
-    static int[][] parkArr = null;
+    int[][] parkArr = null;
 
-    public static int[] solution(String[] park, String[] routes) {
+    public int[] solution(String[] park, String[] routes) {
         // park를 int[][]로 그리기
         parkArr = new int[park.length][park[0].length()];
         int[] start = new int[2];
@@ -76,7 +76,8 @@ public class RobotPuppyWalkingInThePark {
     }
 
     // 2023.4.6(목) 21h35 어제에 이어 v1 수정해서 마저 작성해보기 -> 22h10 제출 시 50.0(테스트 반이 '런타임 에러' 실패)
-    public static boolean isOpen(int[] start, String direction, int distance) {
+    // https://jaimemin.tistory.com/1522 읽어보고, 이 문제 제한사항 다시 보며 생각해 봤는데, 왜 런타임 에러 발생하는지 잘 모르겠음
+    public boolean isOpen(int[] start, String direction, int distance) {
 //        int x = start[0];
 //        int y = start[1];
         for (int i = 1; i <= distance; i++) {
@@ -106,8 +107,9 @@ public class RobotPuppyWalkingInThePark {
     }
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(solution(new String[]{"SOO", "OOO", "OOO"}, new String[]{"E 2", "S 2", "W 1"})));
-        System.out.println(Arrays.toString(solution(new String[]{"SOO", "OXX", "OOO"}, new String[]{"E 2", "S 2", "W 1"})));
-        System.out.println(Arrays.toString(solution(new String[]{"OSO", "OOO", "OXO", "OOO"}, new String[]{"E 2", "S 3", "W 1"})));
+        RobotPuppyWalkingInThePark rpwip = new RobotPuppyWalkingInThePark();
+        System.out.println(Arrays.toString(rpwip.solution(new String[]{"SOO", "OOO", "OOO"}, new String[]{"E 2", "S 2", "W 1"})));
+        System.out.println(Arrays.toString(rpwip.solution(new String[]{"SOO", "OXX", "OOO"}, new String[]{"E 2", "S 2", "W 1"})));
+        System.out.println(Arrays.toString(rpwip.solution(new String[]{"OSO", "OOO", "OXO", "OOO"}, new String[]{"E 2", "S 3", "W 1"})));
     }
 }
