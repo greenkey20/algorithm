@@ -5,7 +5,7 @@ package com.programmers.lv2;
 최단 거리 찾는 문제 = bfs(너비 우선 탐색) = queue를 이용한 반복 구조로 표현
 그래프 문제 풀려면 재귀, 정렬 등 백준 기본부터 이어서 연습하고 와야 할 듯..
  */
-public class SmallestDistanceOnGameMap {
+public class ShortestDistanceOnGameMap {
     public int solution(int[][] maps) {
         int answer = 0;
         int n = maps.length;
@@ -17,7 +17,7 @@ public class SmallestDistanceOnGameMap {
     }
 
     public static void main(String[] args) {
-        SmallestDistanceOnGameMap ob = new SmallestDistanceOnGameMap();
+        ShortestDistanceOnGameMap ob = new ShortestDistanceOnGameMap();
         System.out.println(ob.solution(new int[][]{{1, 0, 1, 1, 1}, {1, 0, 1, 0, 1}, {1, 0, 1, 1, 1}, {1, 1, 1, 0, 1}, {0, 0, 0, 0, 1}})); // 11
         System.out.println(ob.solution(new int[][]{{1, 0, 1, 1, 1}, {1, 0, 1, 0, 1}, {1, 0, 1, 1, 1}, {1, 1, 1, 0, 0}, {0, 0, 0, 0, 1}})); // -1
     }
