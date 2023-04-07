@@ -25,6 +25,15 @@ public class RaceOfRunners {
         }
 
         return answer.toArray(new String[players.length]);
+        // v2 혹시나 해서 바꿔봤는데, 제출 결과는 동일.. 어디서 시간 초과가 되는 걸까? -> 질문하기 게시판에서 힌트 얻음
+        /*
+        String[] answerArr = new String[players.length];
+        for (int i = 0; i < answer.size(); i++) {
+            answerArr[i] = answer.get(i);
+        }
+
+        return answerArr;
+         */
     }
 
     public static void main(String[] args) {
