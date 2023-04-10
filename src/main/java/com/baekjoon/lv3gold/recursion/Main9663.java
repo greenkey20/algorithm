@@ -15,6 +15,8 @@ import java.util.Arrays;
  * ideation = 0번째 열에서 0 ~ N-1번째 행별로 다음 열들에서 queen이 위치할 수 있는 곳(행)들 찾음 -> 그 결과에 따라 1번째 열에서 queen이 위치할 수 있는 행별로 다음 열들에서 queen이 위치할 수 있는 곳(행)들 찾음..
  * -> 그런데 이걸 어떻게 구현해야 할까?
  * -> 위 참고 문헌 보면서 코드로 써봄
+ *
+ * 2023.4.10(월) 추가 reference = https://www.geeksforgeeks.org/n-queen-problem-backtracking-3/
  */
 public class Main9663 {
     // 클래스 변수 선언 -> static 메서드 안에서 사용하려면 static 변수로 만들어야 함
@@ -47,6 +49,7 @@ public class Main9663 {
         if (depth == N) {
             count++;
             System.out.println("count 쌓인다!"); // todo
+            System.out.println("arr[] 배열 = " + Arrays.toString(arr)); // todo
             return;
         }
 
@@ -54,11 +57,11 @@ public class Main9663 {
             arr[depth] = i; // 21h35 사실 arr[] 배열의 의미/용도가 뭔지 모르겠다.. -> 2023.4.10(월) 22h35 위 레퍼런스 블로그 읽고 이해했음 + depth컬럼의 i번째 행에 queen을 놓는다
 //            System.out.println("depth = " + depth + ", i = " + i); // todo
             System.out.println(depth + "컬럼의 " + i + "번째 행에 queen을 놓는다"); // todo
-            System.out.println("arr[] 배열 = " + Arrays.toString(arr));
+            System.out.println("arr[] 배열 = " + Arrays.toString(arr)); // todo
             if (isPossible(depth)) {
                 System.out.println("isPossible(" + depth + ") = true라서 여기 옴"); // todo
                 nQueen(depth + 1);
-                System.out.println("isPossible(" + (depth + 1) + ")를 빠져나감");
+                System.out.println("isPossible(" + (depth + 1) + ")를 빠져나감"); // todo
             }
         }
     }
@@ -75,7 +78,7 @@ public class Main9663 {
             if (arr[i] == arr[column]) {
                 System.out.println("같은 행에 존재함 >.<"); // todo
                 return false;
-            } else if (Math.abs(column - i) == Math.abs(arr[column] - arr[i])) { // 대각선 == 행의 index들 차와 열의 index들 차가 같은 위치들
+            } else if (Math.abs(column - i) == Math.abs(arr[column] - arr[i])) { // 대각선 == 행의 index들 차와 열의 index들 차가 같은 위치들 -> reference 보고 원리는 이해한 것 같아서 작성했는데, 왜 이런 식(expression)으로 쓰는지는 이해 아직 안 됨 2023.4.11(화) 0h20
                 System.out.println("대각선에 존재함 >.<"); // todo
                 return false;
             }
