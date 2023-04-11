@@ -1,0 +1,84 @@
+package com.baekjoon.lv2silver.sort;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+// 2023.4.11(화) 21h30
+public class Main2751 {
+    public static void main(String[] args) throws IOException {
+        // 데이터 입력받기
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+
+        /*
+        int[] arr = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = Integer.parseInt(br.readLine());
+        }
+
+        // v1 시도 = 21h45 맞았습니다
+        Arrays.sort(arr);
+         */
+
+        // 문제 해결 = 정렬
+        // 문제2750에서 구현한 선택 정렬 알고리즘 제출하면 '시간 초과로 틀렸습니다'
+        // 문제2750과 다른 점 = 정렬해야 하는 수의 개수 및 크기(절대값 1,000,000 이하)
+        /* reference = https://st-lab.tistory.com/106
+        Collections.sort() = hybrid 정렬 알고리즘 Timsort (https://en.wikipedia.org/wiki/Timsort) = 합병 정렬 + 삽입 정렬 = 시간복잡도 O(n) ~ O(nlogn) 보장
+         */
+        // v2 Collections.sort() 사용
+        /*
+        List<Integer> arr = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            arr.add(Integer.parseInt(br.readLine()));
+        }
+
+        Collections.sort(arr);
+         */
+
+        // v3 counting/계수 정렬 구현해보기 -> 22h20 제출 시 런타임 에러(ArrayIndexOutOfBounds), 음수 입력 값 때문에..?
+        // reference = https://st-lab.tistory.com/104
+        int[] notSorted = new int[n]; // 문제에서 주어지는, 정렬해야 하는, 배열
+        int[] counts = new int[1000001]; // 정렬 대상 수의 범위
+        int[] arr = new int[n]; // 정렬되는 배열
+
+        // step0) 정렬 대상 배열 입력받기
+        for (int i = 0; i < n; i++) {
+            notSorted[i] = Integer.parseInt(br.readLine());
+        }
+
+        // step1) 정렬해야 하는 배열에서 값을 하나하나 뽑고, 그 수를 인덱스로 갖는 counts의 방에 넣음 = notSorted 원소들의 출현 횟수
+        for (int i = 0; i < notSorted.length; i++) {
+            counts[notSorted[i]]++;
+        }
+
+        // step2) counts 배열의 내용물을 누적합으로 바꿔줌
+        for (int i = 1; i < counts.length; i++) {
+//            counts[i] = counts[i] + counts[i - 1];
+            counts[i] += counts[i - 1];
+        }
+
+        // step3) arr에 정렬시키기
+        for (int i = notSorted.length - 1; i >= 0; i--) {
+            int num = notSorted[i];
+            arr[counts[num] - 1] = num;
+            counts[num]--;
+        }
+
+        // 출력 = 첫째 줄부터 N개의 줄에 오름차순으로 정렬한 결과를 한 줄에 하나씩 출력
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        for (int i : arr) {
+            bw.write(String.valueOf(i));
+            bw.newLine();
+        }
+
+        br.close();
+        bw.flush();
+        bw.close();
+    }
+}
