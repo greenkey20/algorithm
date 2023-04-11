@@ -7,14 +7,14 @@ public class Main {
         // 데이터 입력받기
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
-        int[] arr = new int[n];
-
-        for (int i = 0; i < n; i++) {
-            arr[i] = Integer.parseInt(br.readLine());
-        }
 
         // 문제 해결 = 정렬
-        Arrays.sort(arr);
+        List<Integer> arr = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            arr.add(Integer.parseInt(br.readLine()));
+        }
+
+        Collections.sort(arr);
 
         // 출력 = 첫째 줄부터 N개의 줄에 오름차순으로 정렬한 결과를 한 줄에 하나씩 출력
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
