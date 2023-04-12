@@ -3,7 +3,7 @@ package com.baekjoon.lv1bronze.sort;
 import java.util.Scanner;
 
 // 2022.5.22(일) 23h55
-public class Main_10989 {
+public class Main10989_Scanner {
 	
 	/* 주어진 n개의 수를 오름차순으로 정렬하는 프로그램
 	 * Java8 시간 제한 = 3000ms, 메모리 제한 = 512MB
