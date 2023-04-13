@@ -24,7 +24,7 @@ public class Main1181 {
         }
 
         // 문제 해결 로직
-        inputs = sortWordsWithComparator(inputs);
+        sortWordsWithComparator(inputs);
 
         // 출력
         StringBuilder sb = new StringBuilder();
@@ -36,14 +36,13 @@ public class Main1181 {
         }
          */
         // v2 정렬된 상태로 반환받은 inputs 원소들 중 중복된 단어는 하나만 남기고 제거해야 함
-        for (int i = 0; i < N - 1; i++) {
-            if (!inputs[i].equals(inputs[i + 1])) {
+        // v3 맞았습니다
+        sb.append(inputs[0]).append("\n");
+
+        for (int i = 1; i < N; i++) {
+            if (!inputs[i].equals(inputs[i - 1])) {
                 sb.append(inputs[i]).append("\n");
             }
-        }
-
-        if (!inputs[N - 2].equals(inputs[N - 1])) {
-            sb.append(inputs[N - 1]);
         }
 
         System.out.println(sb);
@@ -78,7 +77,7 @@ public class Main1181 {
         return words;
     }
 
-    public static String[] sortWordsWithComparator(String[] inputs) {
+    public static void sortWordsWithComparator(String[] inputs) {
         Arrays.sort(inputs, new Comparator<String>() {
             @Override
             public int compare(String o1, String o2) {
@@ -90,6 +89,6 @@ public class Main1181 {
             }
         });
 
-        return inputs;
+//        return inputs;
     }
 }
