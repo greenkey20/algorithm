@@ -29,7 +29,8 @@ public class Main11650 {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < n; i++) {
             int[] input = inputs[i];
-            sb.append(Arrays.toString(input)).append("\n");
+//            sb.append(Arrays.toString(input)).append("\n"); // 22h40 출력 양식 때문에 '틀렸습니다'
+            sb.append(input[0]).append(" ").append(input[1]).append("\n"); // 22h45 맞았습니다!
         }
 
         System.out.println(sb);
