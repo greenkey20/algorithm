@@ -61,6 +61,11 @@ public class Main2309 {
     }
 
     // v2
+    /**
+     * @param count 현재 이만큼 크기 조합을 만들고 있음
+     * @param start dwarfs의 순회 위치
+     * @param sum 현재 조합에 뽑힌 dwarfs의 키의 합
+     */
     public static void combination(int count, int start, int sum) {
         // 합이 100인 7명 난쟁이를 찾았으니까, 더 이상 진행할 필요 없음
         if (ckEnd) return;
