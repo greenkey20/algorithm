@@ -12,7 +12,7 @@ public class Main2805 {
     public static void main(String[] args) throws IOException {
         // 데이터 입력받기
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String[] line1 = br.readLine().split(" ");
+        String[] line1 = br.readLine().split(" "); // reference에서는 StringTokenizer로 문자열 자르는데 차이 알아보기
 
         int n = Integer.parseInt(line1[0]); // 나무의 수 = 1 ≤ N ≤ 1,000,000
         int m = Integer.parseInt(line1[1]); // 적어도 m미터의 나무를 집에 가져가야 함 = 1 ≤ M ≤ 2,000,000,000
@@ -33,7 +33,7 @@ public class Main2805 {
         int right = trees[n - 1];
 
         while (left <= right) {
-            mid = (int) Math.floor((left + right) / 2.0);
+            mid = (left + right) / 2; // 1h25 수정하여 제출 시 시간 초과
             int sum = 0;
 
             for (int j = 0; j < n; j++) {
