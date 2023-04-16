@@ -51,7 +51,7 @@ public class Main2805 {
             } else if (sum > m) {
                 left = mid + 1;
             } else {
-                right = mid - 1;
+                right = mid; // 1h15 수정하여 제출 시 시간 초과
             }
         }
 
