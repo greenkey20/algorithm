@@ -25,7 +25,7 @@ public class Main2805 {
 
         // 문제 해결 로직
         Arrays.sort(trees); // 나무들의 크기를 오름차순 정렬
-        int answer = 0;
+        int mid = 0;
 
         // v2 2분탐색 ~ 2023.4.17(월) 0h55 제대로 동작 안 하는데, 여기서 어떻게 고쳐야 할지 잘 모르겠음
         // 2023.4.17(월) 1h5 https://st-lab.tistory.com/270 reference 그림+설명 보다가, 나의 메모/그림 내용을 코드로 쓸 때 실수함을 알게 됨 -> 이것도 제출 시 틀렸습니다
@@ -33,7 +33,7 @@ public class Main2805 {
         int right = trees[n - 1];
 
         while (left <= right) {
-            int mid = (int) Math.floor((left + right) / 2.0);
+            mid = (int) Math.floor((left + right) / 2.0);
             int sum = 0;
 
             for (int j = 0; j < n; j++) {
@@ -46,7 +46,7 @@ public class Main2805 {
 
             if (sum == m) {
 //                System.out.println();
-                answer = mid;
+//                answer = mid; // 1h20 수정하여 제출 시 시간 초과
                 break;
             } else if (sum > m) {
                 left = mid + 1;
@@ -78,6 +78,6 @@ public class Main2805 {
          */
 
         // 출력
-        System.out.println(answer);
+        System.out.println(mid);
     }
 }
