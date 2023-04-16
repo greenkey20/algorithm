@@ -55,7 +55,7 @@ public class Main10819 {
                 max = sum;
             }
 
-            System.out.println("output 배열 = " + Arrays.toString(output) + ", sum = " + sum + ", max = " + max); // todo
+            //System.out.println("output 배열 = " + Arrays.toString(output) + ", sum = " + sum + ", max = " + max); // todo
             return;
         }
 
