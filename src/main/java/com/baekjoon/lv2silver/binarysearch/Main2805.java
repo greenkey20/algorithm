@@ -28,6 +28,7 @@ public class Main2805 {
         int answer = 0;
 
         // v2 2분탐색 ~ 2023.4.17(월) 0h55 제대로 동작 안 하는데, 여기서 어떻게 고쳐야 할지 잘 모르겠음
+        // 2023.4.17(월) 1h5 https://st-lab.tistory.com/270 reference 그림+설명 보다가, 나의 메모/그림 내용을 코드로 쓸 때 실수함을 알게 됨 -> 이것도 제출 시 틀렸습니다
         int left = trees[0];
         int right = trees[n - 1];
 
@@ -47,7 +48,7 @@ public class Main2805 {
 //                System.out.println();
                 answer = mid;
                 break;
-            } else if (sum < m) {
+            } else if (sum > m) {
                 left = mid + 1;
             } else {
                 right = mid - 1;
