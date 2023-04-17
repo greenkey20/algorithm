@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 // 2023.4.17(월) 19h5 ~ 19h20 이분탐색 없이 문제 풀이 로직은 작성했는데(입/출력 예시 ok), 시간 초과될 듯.. -> 시간 초과됨
+// ~ 19h30 v2 의도하는대로 동작x
 public class Main10816 {
     public static void main(String[] args) throws IOException {
         // 데이터 입력받기
@@ -41,12 +42,21 @@ public class Main10816 {
         for (int i = 0; i < m; i++) {
             int numToCheck = numsToCheck[i];
 
+            // v2 binary search
+            // numToCheck가 cardsAtHand에 있는지 없는지 이분탐색을 한다 -> 있으면 counts[i]++
+            if (binarySearch(cardsAtHand, numToCheck) == 1) {
+                counts[i]++;
+            }
+
+            // v1 시간 초과
+            /*
             for (int j = 0; j < n; j++) {
                 int cardAtHand = cardsAtHand[j];
                 if (cardAtHand == numToCheck) {
                     counts[i]++;
                 }
             }
+             */
         }
 
         // 결과 출력
@@ -58,4 +68,24 @@ public class Main10816 {
 
         System.out.println(sb);
     }
+
+    public static int binarySearch(int[] cardsAtHand, int numToCheck) {
+        int left = cardsAtHand[0];
+        int right = cardsAtHand[cardsAtHand.length - 1];
+
+        while (left <= right) {
+            int mid = (left + right) / 2;
+
+            if (numToCheck < mid) {
+                right = mid - 1;
+            } else if (numToCheck > mid) {
+                left = mid + 1;
+            } else {
+                return 1;
+            }
+        }
+
+        return -1;
+    }
+
 }
