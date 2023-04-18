@@ -3,9 +3,10 @@ package com.baekjoon.lv2silver.binarysearch;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
-// 2023.4.18(화) 23h45
+// 2023.4.18(화) 23h45 ~ 23h59 v1 입/출력예시에서는 의도한대로 동작함
 // 2분탐색 가장 기본적인 문제
 public class Main1920 {
     public static void main(String[] args) throws IOException {
@@ -29,13 +30,19 @@ public class Main1920 {
         }
 
         // 문제 해결 로직
+        Arrays.sort(arr); // 2분탐색 대상 데이터는 정렬되어있어야 함
+
+        StringBuilder sb = new StringBuilder();
+
         // numsToCheck 배열의 원소를 하나하나 체크하며 2분탐색 수행
         for (int i = 0; i < m; i++) {
             int numToCheck = numsToCheck[i];
             int searchResult = binarySearch(arr, numToCheck);
+            sb.append(searchResult).append("\n");
         }
 
         // 결과 출력
+        System.out.println(sb);
     }
 
     public static int binarySearch(int[] arr, int numToCheck) {
@@ -54,6 +61,6 @@ public class Main1920 {
             }
         }
 
-        return -1;
+        return 0;
     }
 }
