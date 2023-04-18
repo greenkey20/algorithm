@@ -6,8 +6,9 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-// 2023.4.18(화) 23h45 ~ 23h59 v1 입/출력예시에서는 의도한대로 동작함
+// 2023.4.18(화) 23h45 ~ 23h59 v1 입/출력예시에서는 의도한대로 동작함 + 맞았습니다
 // 2분탐색 가장 기본적인 문제
+// 관련 학습 reference = https://st-lab.tistory.com/261
 public class Main1920 {
     public static void main(String[] args) throws IOException {
         // 데이터 입력받기
@@ -38,7 +39,13 @@ public class Main1920 {
         for (int i = 0; i < m; i++) {
             int numToCheck = numsToCheck[i];
             int searchResult = binarySearch(arr, numToCheck);
-            sb.append(searchResult).append("\n");
+
+            if (searchResult >= 0) {
+                sb.append(1);
+            } else {
+                sb.append(0);
+            }
+            sb.append("\n");
         }
 
         // 결과 출력
@@ -57,10 +64,10 @@ public class Main1920 {
             } else if (numToCheck > arr[mid]) {
                 left = mid + 1;
             } else {
-                return 1;
+                return mid; // 좀 더 일반적인 2분탐색 함수로 쓸 수 있도록 수정
             }
         }
 
-        return 0;
+        return -1;
     }
 }
