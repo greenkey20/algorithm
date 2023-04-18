@@ -8,6 +8,8 @@ import java.util.StringTokenizer;
 
 // 2023.4.17(월) 19h5 ~ 19h20 이분탐색 없이 문제 풀이 로직은 작성했는데(입/출력 예시 ok), 시간 초과될 듯.. -> 시간 초과됨
 // ~ 19h30 v2 의도하는대로 동작x
+// 2023.4.19(수) 0h20 reference https://st-lab.tistory.com/267 학습 -> 이 문제에서처럼 탐색 대상에 중복 있을 경우 왜 현재 내 코드로 안 되는지 이해 못하고 있음 -> 0h50 어제 작성한 코드의 논리적 오류를 깨닫고 수정해봤는데, 중복 요소들을 못 센다..?
+// -> 1h 중복 요소들에 대해 실행 흐름 손으로 써보니 이해 = 현재 알고리즘은 일단 해당 값이 탐색 대상 배열에 있는 것을 확인하면 그 인덱스(mid)를 반환 + 그 값이 더 있는지 찾을 필요 없음
 public class Main10816 {
     public static void main(String[] args) throws IOException {
         // 데이터 입력받기
@@ -36,6 +38,7 @@ public class Main10816 {
         // 문제 해결 로직
         Arrays.sort(cardsAtHand);
 //        Arrays.sort(numsToCheck);
+        System.out.println(Arrays.toString(cardsAtHand)); // todo
 
         int[] counts = new int[m];
 
@@ -44,7 +47,7 @@ public class Main10816 {
 
             // v2 binary search
             // numToCheck가 cardsAtHand에 있는지 없는지 이분탐색을 한다 -> 있으면 counts[i]++
-            if (binarySearch(cardsAtHand, numToCheck) == 1) {
+            if (binarySearch(cardsAtHand, numToCheck) >= 0) {
                 counts[i]++;
             }
 
@@ -70,21 +73,23 @@ public class Main10816 {
     }
 
     public static int binarySearch(int[] cardsAtHand, int numToCheck) {
-        int left = cardsAtHand[0];
-        int right = cardsAtHand[cardsAtHand.length - 1];
+        int left = 0;
+        int right = cardsAtHand.length - 1;
 
         while (left <= right) {
             int mid = (left + right) / 2;
 
-            if (numToCheck < mid) {
+            if (numToCheck < cardsAtHand[mid]) {
                 right = mid - 1;
-            } else if (numToCheck > mid) {
+            } else if (numToCheck > cardsAtHand[mid]) {
                 left = mid + 1;
             } else {
-                return 1;
+                System.out.println(numToCheck + "은 탐색 대상 배열의 인덱스" + mid + "에 있다"); // todo
+                return mid;
             }
         }
 
+        System.out.println(numToCheck + "은 탐색 대상 배열에 없다"); // todo
         return -1;
     }
 
