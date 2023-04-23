@@ -10,7 +10,8 @@ import java.util.StringTokenizer;
 // ~ 19h30 v2 의도하는대로 동작x
 // 2023.4.19(수) 0h20 reference https://st-lab.tistory.com/267 학습 -> 이 문제에서처럼 탐색 대상에 중복 있을 경우 왜 현재 내 코드로 안 되는지 이해 못하고 있음 -> 0h50 어제 작성한 코드의 논리적 오류를 깨닫고 수정해봤는데, 중복 요소들을 못 센다..?
 // -> 1h 중복 요소들에 대해 실행 흐름 손으로 써보니 이해 = 현재 알고리즘은 일단 해당 값이 탐색 대상 배열에 있는 것을 확인하면 그 인덱스(mid)를 반환 + 그 값이 더 있는지 찾을 필요 없음 -> 다른 방법의 풀이가 필요하다?
-// 2023.4.21(금) 23h50 위 레퍼런스 읽고, 알고리즘은 이해한 것 같아 구현해 보기로 한다 = lower/upper bound 개념 적용 -> 0h40 입/출력 예시에 대해서는 탐색 되는데, '틀렸습니다'
+// 2023.4.21(금) 23h50 위 레퍼런스 읽고, 알고리즘은 이해한 것 같아 구현해 보기로 한다 = lower/upper bound 개념 적용 + 그런데 이런 알고리즘을 떠올리려면 어떻게 해야 할까..? ㅠㅠ -> 0h40 입/출력 예시에 대해서는 탐색 되는데, '틀렸습니다'
+// 2023.4.23(일) 22h30 알고리즘 이해를 바탕으로 조금 다시 수정해 봤는데(while문 반복 조건 수정) 여전히 '틀렸습니다', 어떻게 검증/검토해야 좋을까?
 public class Main10816 {
     public static int[] cardsAtHand;
     public static int[] lowerBounds;
@@ -119,7 +120,7 @@ public class Main10816 {
         int left = 0;
         int right = cardsAtHand.length - 1;
 
-        while (left <= right) {
+        while (left < right) {
             int mid = left + (right - left) / 2; // 계산 과정 중 int overflow 발생을 대비하는 코드
 
             if (numToCheck <= cardsAtHand[mid]) {
@@ -128,9 +129,9 @@ public class Main10816 {
                 left = mid + 1;
             }
 
-            if (left == right) {
-                break;
-            }
+//            if (left == right) {
+//                break;
+//            }
         }
 
         return left;
@@ -140,7 +141,7 @@ public class Main10816 {
         int left = 0;
         int right = cardsAtHand.length - 1;
 
-        while (left <= right) {
+        while (left < right) {
             int mid = left + (right - left) / 2;
 
             if (numToCheck < cardsAtHand[mid]) {
@@ -149,9 +150,9 @@ public class Main10816 {
                 left = mid + 1;
             }
 
-            if (left == right) {
-                break;
-            }
+//            if (left == right) {
+//                break;
+//            }
         }
 
         return left;
