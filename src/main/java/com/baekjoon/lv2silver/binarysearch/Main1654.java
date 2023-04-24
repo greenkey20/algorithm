@@ -17,7 +17,7 @@ public class Main1654 {
         StringTokenizer st = new StringTokenizer(br.readLine(), " ");
         int k = 0; // 가지고 있는 랜선의 수
         int n = 0; // n개의 answer 길이의 랜선으로 자르고자 함
-        while (st.hasMoreTokens()) {
+        while (st.hasMoreTokens()) { // reference에 따르면 굳이 이 반복문 필요 없고, nextToken()을 바로 k,n에 대입해서 쓰면 됨
             k = Integer.parseInt(st.nextToken());
             n = Integer.parseInt(st.nextToken());
         }
@@ -28,7 +28,7 @@ public class Main1654 {
         }
 
         // 문제 해결 로직
-        // 2023.4.25(화) 0h5 upperbound 방식 binary search로 수정해봄 -> 0h15 제출 시 '틀렸습니다'
+        // 2023.4.25(화) 0h5 upperbound 방식 binary search로 수정해봄 -> 0h15 제출 시 '틀렸습니다' -> reference 참고해서 수정해봄 = 0h30 여전히 '틀렸습니다'
         Arrays.sort(lines);
         System.out.println("가지고 있는 랜선의 수 k = " + k + ", n개의 랜선으로 만들고자 함 = " + n + ", lines 배열 = " + Arrays.toString(lines)); // todo
 
@@ -36,6 +36,7 @@ public class Main1654 {
         int right = lines[k - 1];
         int answer = 0;
         int mid = 0;
+
 
         while (left < right) {
             mid = (left + right) / 2;
@@ -52,13 +53,13 @@ public class Main1654 {
                 break;
             } else*/
             if (numOfLines < n) {
-                right = mid / 2;
+                right = mid;
             } else {
                 left = mid + 1;
             }
         }
 
-        answer = mid + 1;
+        answer = mid - 1;
 
         // 결과 출력
         System.out.println(answer);
