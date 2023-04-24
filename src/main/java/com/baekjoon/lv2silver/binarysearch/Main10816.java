@@ -134,7 +134,7 @@ public class Main10816 {
 //            }
         }
 
-        return left;
+        return left; // 2023.4.23(일) 22h45 입/출력 예시 10의 lowerBound 탐색을 종이에 써서 하다 보니 left+1을 return해야 하나? 공책에 메모한 고민 과정 참고..
     }
 
     public static int upperBound(int numToCheck) {

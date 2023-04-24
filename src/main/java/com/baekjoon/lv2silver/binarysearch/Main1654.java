@@ -8,6 +8,8 @@ import java.util.StringTokenizer;
 
 // 2023.4.17(월) 18h40 ! 18h55 v1 틀렸습니다 = 최대의 answer가 안 나옴
 // Main2805와 비슷한 문제로 추천받음
+/* 2023.4.24(월) 22h55 reference https://st-lab.tistory.com/269 공부
+ */
 public class Main1654 {
     public static void main(String[] args) throws IOException {
         // 데이터 입력받기
