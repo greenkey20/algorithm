@@ -28,19 +28,19 @@ public class Main1654 {
         }
 
         // 문제 해결 로직
-        // 2023.4.25(화) 0h5 upperbound 방식 binary search로 수정해봄 -> 0h15 제출 시 '틀렸습니다' -> reference 참고해서 수정해봄 = 0h30 여전히 '틀렸습니다'
+        // 2023.4.25(화) 0h5 upperbound 방식 binary search로 수정해봄 -> 0h15 제출 시 '틀렸습니다' -> reference 참고해서 수정해봄 = 0h30 여전히 '틀렸습니다' -> 0h50 현재 버전도 '틀렸습니다', reference 봐도 어디가 문제인지 잘 모르겠음
         Arrays.sort(lines);
         System.out.println("가지고 있는 랜선의 수 k = " + k + ", n개의 랜선으로 만들고자 함 = " + n + ", lines 배열 = " + Arrays.toString(lines)); // todo
 
-        int left = 0;
-        int right = lines[k - 1];
-        int answer = 0;
-        int mid = 0;
+        long left = 0;
+        long right = lines[k - 1] + 1;
+//        int answer = 0;
+        long mid = 0;
 
 
         while (left < right) {
             mid = (left + right) / 2;
-            int numOfLines = 0;
+            long numOfLines = 0;
 
             for (int i = 0; i < k; i++) {
                 int line = lines[i];
@@ -52,16 +52,16 @@ public class Main1654 {
                 answer = mid;
                 break;
             } else*/
-            if (numOfLines < n) {
-                right = mid;
+            if (numOfLines < n) { // 현재 mid로 만들어진 랜선의 개수가 n보다 작음 = mid가 너무 큼 -> 우측 boundary를 옮겨서 탐색 범위 축소
+                right = mid - 1;
             } else {
                 left = mid + 1;
             }
         }
 
-        answer = mid - 1;
+//        answer = right;
 
         // 결과 출력
-        System.out.println(answer);
+        System.out.println(mid - 1);
     }
 }
