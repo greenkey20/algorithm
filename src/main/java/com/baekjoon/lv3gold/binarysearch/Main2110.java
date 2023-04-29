@@ -9,18 +9,40 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 // 2023.4.26(수) 23h45 ~ 0h30 v1 while문 안 thisRouter 관련 array index out of bounds exception -> 2023.4.29(토) 23h50 v2 이 예외는 처리하였으나, 프로그램 로직 안 맞는 듯
+// -> 2023.4.30(일) 1h5 아직 동작 안 하는데, 어떻게 수정해야 할지 모르겠다 -> 일단 프로그램을 작은 단위 메서드/모듈들로 나눠봄 according to Eddie's tips
 /* 문제 이해에 시간 걸렸는데, reference https://st-lab.tistory.com/277에 따라 "포인트는 집 간 최소 거리 이상일 때 설치가 가능하다"
  */
 public class Main2110 {
+    public static int n;
+    public static int c;
     public static Integer[] houses;
 
+    // main function/method
     public static void main(String[] args) throws IOException {
+        // 형식1) 백준 웹사이트 요구 사항 = through data layer v2
+//        presentSolution(baekjoonIO());
+
+        // 형식2) 테스트용 = through data layer v1
+        presentSolution(myTestCase1());
+    }
+
+    // 데이터 입력받기 v1 = data layer v1
+    public static int myTestCase1() {
+        n = 5;
+        c = 3;
+        houses = new Integer[]{1, 2, 8, 4, 9};
+
+        return binarySearch(houses);
+    }
+
+    // 데이터 입력받기 v2 = data layer v2
+    public static int baekjoonIO() throws IOException {
         // 데이터 입력받기
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         StringTokenizer ts = new StringTokenizer(br.readLine(), " ");
-        int n = Integer.parseInt(ts.nextToken()); // 집의 개수
-        int c = Integer.parseInt(ts.nextToken()); // 공유기의 개수
+        n = Integer.parseInt(ts.nextToken()); // 집의 개수
+        c = Integer.parseInt(ts.nextToken()); // 공유기의 개수
 
         houses = new Integer[n];
 
@@ -28,13 +50,23 @@ public class Main2110 {
             houses[i] = Integer.parseInt(br.readLine());
         }
 
-        // 문제 해결 로직
+        return binarySearch(houses);
+    }
+
+    // 결과 출력 = presentation layer
+    public static void presentSolution(int result) {
+        System.out.println(result);
+    }
+
+    // 문제 해결 로직 = business logic layer
+    public static int binarySearch(Integer[] houses) {
         Arrays.sort(houses);
         List<Integer> housesList = new ArrayList<>(Arrays.asList(houses));
+        System.out.println("houses 배열 = " + Arrays.toString(houses)); // todo
 
         // houses 간 거리에 대해 이분탐색
         int left = houses[0];
-        int right = houses[n - 1] - houses[0] + 1; // upperBound의 의미를 오늘은 조금 다르게 정의해서 풀어보기로 함
+        int right = houses[n - 1] - houses[0]; // upperBound의 의미를 오늘은 조금 다르게 정의해서 풀어보기로 함
         int mid = 0;
         int numOfRouters = 0;
 
@@ -42,33 +74,39 @@ public class Main2110 {
         routers[0] = houses[0]; // 첫번째 집에는 공유기를 항상? 설치하게 됨
         int thisRouter = 0;
         int numOfHouseOfThisRouter = 0;
+        int i = 0;
+        int j = 0;
 
         while (left < right) {
             mid = (left + right) / 2;
+            System.out.println("left = " + left + ", right = " + right + ", mid = " + mid); // todo
 
-            for (int i = 0, j = 1; i < c && numOfHouseOfThisRouter + j < n - 1; ) {
+            for (j = 1; i < c && numOfHouseOfThisRouter + j < n; ) {
                 thisRouter = routers[i];
                 numOfHouseOfThisRouter = housesList.indexOf(thisRouter);
                 int nextHouse = houses[numOfHouseOfThisRouter + j];
 
+                System.out.println("현재 가장 최근에 설치된 공유기 집 = " + thisRouter + ", 다음 집 = " + nextHouse + ", 현재 i = " + i + ", j = " + j); // todo
+
                 if (nextHouse - thisRouter >= mid) {
                     routers[i + 1] = nextHouse;
                     numOfRouters++;
+                    numOfHouseOfThisRouter += j;
                     i++;
                     j = 1;
+                    System.out.println("공유기 설치 -> " + Arrays.toString(routers)); // todo
                 } else {
                     j++;
                 }
             }
 
             if (numOfRouters < c) {
-                right = mid;
+                right = mid - 1;
             } else {
-                left = mid;
+                left = mid + 1;
             }
         }
 
-        // 결과 출력
-        System.out.println(mid);
+        return mid;
     }
 }
