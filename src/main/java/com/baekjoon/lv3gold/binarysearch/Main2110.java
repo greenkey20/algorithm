@@ -41,9 +41,9 @@ public class Main2110 {
         // 데이터 입력받기
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        StringTokenizer ts = new StringTokenizer(br.readLine(), " ");
-        n = Integer.parseInt(ts.nextToken()); // 집의 개수
-        c = Integer.parseInt(ts.nextToken()); // 공유기의 개수
+        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+        n = Integer.parseInt(st.nextToken()); // 집의 개수
+        c = Integer.parseInt(st.nextToken()); // 공유기의 개수
 
         houses = new Integer[n];
 
