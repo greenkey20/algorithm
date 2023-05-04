@@ -3,10 +3,12 @@ package com.baekjoon.lv2silver.dividenconquer;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 import java.util.StringTokenizer;
 
 // 2023.5.4(목) 18h15 ~ 18h30 v1 Math 클래스 활용해서 제출해보기 = 틀렸습니다, Math.pow() 결과도 long 자료형 범위를 넘어갈 수 있기에 이렇게 풀면 틀린다
 // ~ 18h50 v2 = 시간 초과 = 왜일까? 어느 부분을 개선해야 할까?
+// ~19h50 v3 = 모듈로 연산 포함 ㄹ턴하도록 변경했는데, 여전히 시간 초과
 /* A, B, C는 모두 2,147,483,647(Java int 자료형의 최대값) 이하의 자연수 -> 이런 A, B를 거듭제곱하면 long 자료형 범위도 넘어감 + 시간 초과도 될 거라고 함ㄴ
 reference = https://st-lab.tistory.com/237
  */
@@ -36,7 +38,8 @@ public class Main1629 {
 
     // 결과 출력
     public static void presentSolution(long result) {
-        System.out.println(result % c);
+//        System.out.println(result % c);
+        System.out.println(result);
     }
 
     // 문제 해결 로직
@@ -47,13 +50,18 @@ public class Main1629 {
         }
 
         if (exponent % 2 == 0) {
-            return baseRaisedToPowerOfExponent(base, exponent / 2, divisor) * baseRaisedToPowerOfExponent(base, exponent / 2, divisor);
+            return (baseRaisedToPowerOfExponent(base, exponent / 2, divisor) % divisor) * (baseRaisedToPowerOfExponent(base, exponent / 2, divisor) % divisor) % divisor;
         }
 
-        return baseRaisedToPowerOfExponent(base, exponent / 2, divisor) * baseRaisedToPowerOfExponent(base, exponent / 2, divisor) * baseRaisedToPowerOfExponent(base, 1, divisor);
+        return (baseRaisedToPowerOfExponent(base, exponent / 2, divisor) % divisor) * (baseRaisedToPowerOfExponent(base, exponent / 2, divisor) % divisor) * base % divisor;
+//        return baseRaisedToPowerOfExponent(base, exponent / 2, divisor) * baseRaisedToPowerOfExponent(base, exponent / 2, divisor) * baseRaisedToPowerOfExponent(base, 1, divisor);
 
         // v1
 //        return (long) (Math.pow(base, exponent)) % divisor;
+    }
+
+    public static long baseRaisedToPowerOfExponentMemoized(int base, int exponent, int divisor) {
+        return 0;
     }
 
 }
