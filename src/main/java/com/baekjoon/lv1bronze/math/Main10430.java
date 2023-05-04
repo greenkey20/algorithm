@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-// 2023.5.3(수) 0h35 1629(분할정복 거듭제곱) 문제 풀다가, modulo 연산의 정리(knou 이산수학 p337 정리13.6)를 사용하는데, 그것을 증명하는 문제라고 하여 풀게 됨
+// 2023.5.3(수) 0h35 1629(분할정복 거듭제곱) 문제 풀다가, modulo 연산의 정리(knou 이산수학 p337 정리13.6? 모듈로 합동 공식?)를 사용하는데, 그것을 증명하는 문제라고 하여 풀게 됨
 public class Main10430 {
     public static int a;
     public static int b;
