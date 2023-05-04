@@ -48,14 +48,14 @@ public class Main1629 {
     public static long baseRaisedToPowerOfExponent(int base, int exponent, int divisor) {
         // v2
         if (exponent == 1) {
-            return base;
+            return base % divisor; // 21h15 이거 수정했는데도, 여전히 틀렸습니다
         }
 
         // v4 references 참고해서 다시 작성
         long divide = baseRaisedToPowerOfExponent(base, exponent / 2, divisor) % divisor;
 
         if (exponent % 2 == 1) {
-            divide = divide * base % divisor;
+            divide = divide * (base % divisor);
         }
 
         return divide * divide % divisor;
