@@ -8,7 +8,7 @@ import java.util.StringTokenizer;
 // ~ 18h50 v2 = 시간 초과 = 왜일까? 어느 부분을 개선해야 할까?
 // ~19h10 v3 = 모듈로 연산 포함 ㄹ턴하도록 변경했는데, 여전히 시간 초과
 // 20h50 ~ 21h5 v4 = 분할정복 로직 수정 = 여전히 틀렸습니다
-/* 2023.5.5(금) 21h35 references 참고하며 다시 검토..
+/* 2023.5.5(금) 21h35 references 참고하며 다시 검토 -> 21h55 맞았습니다
 
 A, B, C는 모두 2,147,483,647(Java int 자료형의 최대값) 이하의 자연수 -> 이런 A, B를 거듭제곱하면 long 자료형 범위도 넘어감 + 시간 초과도 될 거라고 함ㄴ
 reference = https://st-lab.tistory.com/237
@@ -56,7 +56,7 @@ public class Main {
         }
 
         // v4 references 참고해서 다시 작성
-        long divide = baseRaisedToPowerOfExponent(exponent / 2) % divisor;
+        long divide = baseRaisedToPowerOfExponent(exponent / 2);
 
         if (exponent % 2 == 1) {
             return divide * divide % divisor * base % divisor;
