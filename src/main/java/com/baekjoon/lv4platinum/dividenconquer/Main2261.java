@@ -1,11 +1,9 @@
-package com.baekjoon.lv4platinum;
+package com.baekjoon.lv4platinum.dividenconquer;
 
-import java.awt.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
-import java.util.List;
 
 // 2023.5.6(토) 23h
 /* 문제 읽으며, 연습장에 끄적여봄 -> 분할정복을 어떻게 적용하는지는 모르겠고, 문제 분류 중 '스위핑(sweeping)' 검색해봄
@@ -65,7 +63,7 @@ public class Main2261 {
 
         // x좌표 및 y좌표 오름차순으로 정렬
         // v1 list에 int[x좌표, y좌표]로 점들을 만들어 담으려고 함
-        List<int[]> pointsList = new ArrayList<>();
+//        List<int[]> pointsList = new ArrayList<>();
 
         // v2 Point 클래스 + Point 객체 배열에 점들을 담으려고 함
         points = new Point[pointsSet.size()];
@@ -95,6 +93,8 @@ public class Main2261 {
 //            pointsList.add(new Integer[]{Integer.parseInt(pointStrSplit[0], Integer.parseInt(pointStrSplit[1]))});
         }
 
+        // points 배열 잘 만들어지나 확인하는 콘솔 출력
+        /*
         for (int i = 0; i < points.length; i++) {
             // v1 list에 int[x좌표, y좌표]로 점들을 만들어 담으려고 함
 //            System.out.println(Arrays.toString(pointsList.get(i))); // todo
@@ -102,14 +102,78 @@ public class Main2261 {
             // v2 Point 클래스 + Point 객체 배열에 점들을 담으려고 함
             System.out.println(points[i].toString());
         }
+         */
 
-        // 문제 해결 로직
-
-
-        // 결과 출력
-        System.out.println();
+        // 2023.6.1(목) 0h15 reference 보면서 작성해봄 -> (자다가 일어나서)5h45 제출 시 '틀렸습니다'
+        // 문제 해결 로직 + 결과 출력
+        System.out.println(closest(0, n - 1));
     }
 
+    public static int closest(int start, int end) {
+        // point[start] ~ point[end] 원소가 3개 이하이면, brute force로 거리 구해서 반환
+        if (end - start + 1 < 4) {
+            return bruteDistance(start, end);
+        }
+
+        int mid = (start + end) / 2;
+
+        int left = closest(start, mid);
+        int right = closest(mid + 1, end);
+
+        int minDistance = Math.min(left, right);
+
+        int band = middleBand(start, mid, end, minDistance);
+        return Math.min(minDistance, band);
+    }
+
+    private static int bruteDistance(int start, int end) {
+        int minDistance = Integer.MAX_VALUE;
+
+        for (int i = start; i < end; i++) {
+            for (int j = i + 1; j <= end; j++) {
+                int thisDistance = calculateDistance(points[i], points[j]);
+                minDistance = Math.min(minDistance, thisDistance);
+            }
+        }
+
+        return minDistance;
+    }
+
+    private static int middleBand(int start, int mid, int end, int minDistance) {
+        int xDistance; // 5h40 나의 질문 = 변수 선언 시 초기화 해두는 것과 안 해두는 것의 성능 차이가 있나?
+
+        List<Point> list = new ArrayList<>();
+
+        // 후보군 추출
+        int midX = points[mid].x;
+        for (int i = start; i <= end; i++) {
+            xDistance = points[i].x - midX;
+
+            if (xDistance * xDistance < minDistance) {
+                list.add(points[i]);
+            }
+        }
+
+        // 후보군들을 y좌표 기준으로 정렬 -> 5h 나의 고민 = 이 정렬이 꼭 필요한가? 내 생각에는 이미 points 배열에서 x좌표 및 y좌표로 정렬되어있기 때문에 필요 없을 것 같은데..
+//        Collections.sort(list);
+
+        int yDistance;
+        for (int i = 0; i < list.size() - 1; i++) {
+            for (int j = 1; j < list.size(); j++) {
+                yDistance = list.get(i).y - list.get(j).y;
+
+                if (yDistance * yDistance < minDistance) {
+                    minDistance = Math.min(calculateDistance(list.get(i), list.get(j)), minDistance);
+                } else {
+                    break;
+                }
+            }
+        }
+
+        return minDistance;
+    }
+
+    // 위에서 bruteDistance()로 작성한 메서드의 first draft..
     public static int binarySearch(Point[] points) {
         int min = 0;
 
@@ -123,6 +187,6 @@ public class Main2261 {
 
     // 두 점 사이의 거리(의 제곱, 문제에서 반환해야 하는 값) 구하는 메서드
     public static int calculateDistance(Point p1, Point p2) {
-        return (p1.x - p2.x) * (p1.x - p2.x) * (p1.y - p2.y) * (p1.y - p2.y);
+        return (p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y);
     }
 }
