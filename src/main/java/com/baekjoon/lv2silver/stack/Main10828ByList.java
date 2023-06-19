@@ -8,7 +8,7 @@ import java.util.List;
 
 // 2023.6.19(월) 23h50 ~ 2023.6.20(화) 0h35 v1 맞았습니다
 // 레퍼런스 하나(https://st-lab.tistory.com/175) 찾아서 얼핏 봤는데(ArrayList를 써도 상관은 없지만, 원리를 설명하기 위해서 직접 구현하셨다 함), 나도 배열로 구현해보자..?!
-public class Main10828 {
+public class Main10828ByList {
     private static List<Integer> stack = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
