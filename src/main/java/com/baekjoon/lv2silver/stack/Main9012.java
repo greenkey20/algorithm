@@ -56,7 +56,7 @@ public class Main9012 {
 
     // 2023.6.21(수) 1h15 연습장 + 연필로 생각 정리하다가 써봄 -> 1h45 v1 맞았습니다
     /* 회고
-    1. 스택 자료구조를 사용해서 푼 건 아닌데,, 스택을 사용해서 푸는 레퍼런스도 찾아봐야겠다
+    1. 스택 자료구조를 사용해서 푼 건 아닌데,, 스택을 사용해서 푸는 레퍼런스도 찾아봐야겠다 -> e.g. https://st-lab.tistory.com/178
     2. StringBuilder의 메서드들을 찾아가며(IntelliJ suggestion list를 보며) 푼 것이다
      */
     public static String isVps(String ps) {
