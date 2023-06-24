@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Stack;
 
 // 2023.6.22(목) 17h15 ~ 17h35 v1 문제점 = VPS 안의 VPS가 곱셈으로 묶여야 하는지, 덧셈으로 묶여야 하는지, 처리 안 함 -> e.g. (()[[]])([]) = 42 = (2 * (3 * 3))  * 2 + 3 * 2 -> 18h15까지 패턴 등 고민했으나, 해결 못함
-public class Main2504 {
+public class Main2504v1 {
     public static void main(String[] args) throws IOException {
         // 데이터 입력받기
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
