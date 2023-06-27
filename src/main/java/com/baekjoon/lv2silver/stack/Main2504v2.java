@@ -4,29 +4,29 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
 
 // 2023.6.24(토) 23h40 ~ 2023.6.26(일) 6h25 (약 1.5시간 작업) v1 test result1 = 42
-// 2023.6.27(화) 22h5 ~ 22h55 v2 일단 입/출력 예제 2개에 대해서는 테스트 통과
+// 2023.6.27(화) 22h5 ~ 22h55 v2 일단 입/출력 예제 2개에 대해서는 테스트 통과 -> 다시 한 번 로직 검토 후 23h35 제출 = 틀렸습니다
 
 /**
  * 부트캠프 section2 학습 내용 참고해서 트리 자료구조 구현해서 사용하고자 함
  */
-class Pair {
+class Node {
     // 멤버 변수
-    private String value;
-    private ArrayList<Pair> children;
+//    private String value;
+    private ArrayList<Node> children;
     private int sum;
 
     // 생성자
-    public Pair() {
-        this.value = null;
+    public Node() {
+//        this.value = null;
         this.children = null;
         this.sum = 0;
     }
 
-    public Pair(String data) {
+    /*
+    public Node(String data) {
         this.value = data;
     }
 
@@ -37,12 +37,13 @@ class Pair {
     public void setValue(String value) {
         this.value = value;
     }
+     */
 
-    public ArrayList<Pair> getChildrenNodes() {
+    public ArrayList<Node> getChildrenNodes() {
         return children;
     }
 
-    public void addChildNode(Pair node) {
+    public void addChildNode(Node node) {
         if (children == null) {
             children = new ArrayList<>();
         }
@@ -68,7 +69,7 @@ class Pair {
 }
 
 public class Main2504v2 {
-    private static Pair rootNode = null;
+    private static Node rootNode = null;
     private static Stack<Character> stack = new Stack<>();
 
     public static void main(String[] args) throws IOException {
@@ -84,9 +85,9 @@ public class Main2504v2 {
     }
 
     public static int solution(String ps) {
-        int result = 0;
+        int sum = 0;
         int temp = 1;
-        int total = 0;
+        int result = 0;
 
         for (int i = 0; i < ps.length(); i++) {
             char thisCh = ps.charAt(i);
@@ -95,10 +96,11 @@ public class Main2504v2 {
 
             if (thisCh == '(' || thisCh == '[') { // 금번 확인하는 문자가 여는 괄호인 경우
                 if (rootNode == null) {
-                    rootNode = new Pair();
+                    rootNode = new Node();
                 } else {
-                    rootNode.addChildNode(new Pair(String.valueOf(thisCh)));
+                    rootNode.addChildNode(new Node());
                 }
+
                 stack.push(thisCh);
             } else { // 금번 확인하는 문자가 닫는 괄호인 경우
                 char top = stack.peek();
@@ -112,27 +114,33 @@ public class Main2504v2 {
                     stack.pop();
 //                    rootNode.getChildrenNodes().get(rootNode.getChildrenSize() - 1).setValue("()");
 
-                    if (rootNode.getChildrenSize() > 1) {
-                        rootNode.getChildrenNodes().remove(rootNode.getChildrenSize() - 1);
-                        temp *= 2;
-                    } else if (rootNode.getChildrenSize() <= 1) {
-                        if (stack.size() > 0) {
+                    if (rootNode.getChildrenNodes() != null) { // 자식노드 리스트가 null이 아닌 경우 -> 나의 질문 = 자식노드가 모두 remove 되고나면 children 멤버변수가 null이 되나? 아니면 길이가 0인 리스트로 남아있나?
+                        if (rootNode.getChildrenSize() > 1) {
+                            rootNode.getChildrenNodes().remove(rootNode.getChildrenSize() - 1);
                             temp *= 2;
-                            rootNode.addSum(temp);
-                            result = rootNode.getSum();
-                            temp = 1;
-                            rootNode.getChildrenNodes().remove(0);
-                        } else {
-                            result = rootNode.getSum() * 2;
-                            temp = 1;
+                        } else if (rootNode.getChildrenSize() <= 1) {
+                            if (stack.size() > 0) {
+                                temp *= 2;
+                                rootNode.addSum(temp);
+                                sum = rootNode.getSum();
+                                temp = 1;
+                                rootNode.getChildrenNodes().remove(0);
+                            } else {
+                                sum = rootNode.getSum() * 2;
+                                temp = 1;
 //                            rootNode.setSumToZero();
-                            rootNode = null;
+                                rootNode = null;
+                            }
                         }
+                    } else {
+                        temp *= 2;
+                        rootNode.addSum(temp);
+                        sum += rootNode.getSum();
                     }
                 } else if (top == '[' && thisCh == ']') {
                     stack.pop();
 
-                    if (rootNode.getChildrenNodes() != null) {
+                    if (rootNode.getChildrenNodes() != null) { // 자식노드 리스트가 null이 아닌 경우
                         if (rootNode.getChildrenSize() > 1) {
                             rootNode.getChildrenNodes().remove(rootNode.getChildrenSize() - 1);
                             temp *= 3;
@@ -140,11 +148,11 @@ public class Main2504v2 {
                             if (stack.size() > 0) {
                                 temp *= 3;
                                 rootNode.addSum(temp);
-                                result = rootNode.getSum();
+                                sum = rootNode.getSum();
                                 temp = 1;
                                 rootNode.getChildrenNodes().remove(0);
                             } else {
-                                result = rootNode.getSum() * 3;
+                                sum = rootNode.getSum() * 3;
                                 temp = 1;
 //                            rootNode.setSumToZero();
                                 rootNode = null;
@@ -153,28 +161,30 @@ public class Main2504v2 {
                     } else {
                         temp *= 3;
                         rootNode.addSum(temp);
-                        result += rootNode.getSum();
+                        sum += rootNode.getSum();
                     }
                 }
             }
 
             if (stack.isEmpty()) {
-                total += result;
+                result += sum;
             }
 
+            /*
             System.out.println("stack = " + stack);
             System.out.println("temp = " + temp);
-            System.out.println("result = " + result);
+            System.out.println("result = " + sum);
             if (rootNode != null) {
                 System.out.println("rootnode는 null 아님");
                 System.out.println("rootNode의 멤버변수 sum = " + rootNode.getSum());
                 System.out.println("rootNode의 자식노드(들) = " + rootNode.getChildrenNodes());
             }
             System.out.println("-----------------------------");
+             */
         }
 
-        if (!stack.isEmpty()) total = 0;
+        if (!stack.isEmpty()) result = 0;
 
-        return total;
+        return result;
     }
 }
