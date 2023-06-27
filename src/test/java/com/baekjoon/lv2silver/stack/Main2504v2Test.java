@@ -14,11 +14,13 @@ class Main2504v2Test {
         String ps2 = "[][]((])";
 
         // when
+        System.out.println("===== ps1 = " + ps1 + " =====");
         int result1 = Main2504v2.solution(ps1);
+        System.out.println("===== ps2 = " + ps2 + " =====");
         int result2 = Main2504v2.solution(ps2);
 
         // then
-        assertEquals(0, result2);
         assertEquals(28, result1);
+        assertEquals(0, result2);
     }
 }
