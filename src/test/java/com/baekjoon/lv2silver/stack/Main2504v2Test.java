@@ -82,4 +82,45 @@ class Main2504v2Test {
         assertEquals(0, result);
     }
 
+    // 2023.6.29(목) 0h25 추가 = 현재 actual 9가 나옴
+    @Test
+    @DisplayName("ps6 테스트")
+    void testMain2504v2Case6() {
+        // given
+        String ps6 = "[]()";
+
+        // when
+        int result = Main2504v2.solution(ps6);
+
+        // then
+        assertEquals(5, result);
+    }
+
+    // 기본 케이스
+    @Test
+    @DisplayName("ps7 테스트")
+    void testMain2504v2Case7() {
+        // given
+        String ps7 = "()";
+
+        // when
+        int result = Main2504v2.solution(ps7);
+
+        // then
+        assertEquals(2, result);
+    }
+
+    // 기본 케이스
+    @Test
+    @DisplayName("ps8 테스트")
+    void testMain2504v2Case8() {
+        // given
+        String ps8 = "[]";
+
+        // when
+        int result = Main2504v2.solution(ps8);
+
+        // then
+        assertEquals(3, result);
+    }
 }

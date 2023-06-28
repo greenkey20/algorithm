@@ -143,6 +143,7 @@ public class Main2504v2 {
                         temp *= 2;
                         rootNode.addSum(temp);
                         sum += rootNode.getSum();
+                        rootNode = null; // 2023.6.29(목) 0h40 현재 깊이 생각 안 하고, 테스트 케이스 하나하나 추가하며 주먹구구식으로 수정하고 있다.. 전체적인 로직을 다시 확인해보자..
                     }
                 } else if (top == '[' && thisCh == ']') {
                     stack.pop();
@@ -169,12 +170,15 @@ public class Main2504v2 {
                         temp *= 3;
                         rootNode.addSum(temp);
                         sum += rootNode.getSum();
+                        rootNode = null;
                     }
                 }
             }
 
             if (stack.isEmpty()) {
                 result += sum;
+                temp = 1;
+                sum = 0;
             }
 
             /*
