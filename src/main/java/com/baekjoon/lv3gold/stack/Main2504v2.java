@@ -1,4 +1,4 @@
-package com.baekjoon.lv2silver.stack;
+package com.baekjoon.lv3gold.stack;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,6 +8,7 @@ import java.util.Stack;
 
 // 2023.6.24(토) 23h40 ~ 2023.6.26(일) 6h25 (약 1.5시간 작업) v1 test result1 = 42
 // 2023.6.27(화) 22h5 ~ 22h55 v2 일단 입/출력 예제 2개에 대해서는 테스트 통과 -> 다시 한 번 로직 검토 후 23h35 제출 = 틀렸습니다
+// 2023.6.28(수) 23h55 '현재 순회 문자' 콘솔 출력 주석 처리 후 제출 시 java.util.EmptyStackException 런타임 에러
 
 /**
  * 부트캠프 section2 학습 내용 참고해서 트리 자료구조 구현해서 사용하고자 함
@@ -91,7 +92,7 @@ public class Main2504v2 {
 
         for (int i = 0; i < ps.length(); i++) {
             char thisCh = ps.charAt(i);
-            System.out.println("현재 순회 문자 thisCh = " + thisCh);
+//            System.out.println("현재 순회 문자 thisCh = " + thisCh);
 //            char nextCh = ps.charAt(i + 1);
 
             if (thisCh == '(' || thisCh == '[') { // 금번 확인하는 문자가 여는 괄호인 경우

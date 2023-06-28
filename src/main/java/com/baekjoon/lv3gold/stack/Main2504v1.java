@@ -1,4 +1,4 @@
-package com.baekjoon.lv2silver.stack;
+package com.baekjoon.lv3gold.stack;
 
 import java.io.BufferedReader;
 import java.io.IOException;

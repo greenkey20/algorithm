@@ -1,5 +1,7 @@
 package com.baekjoon.lv2silver.stack;
 
+import com.baekjoon.lv3gold.stack.Main2504v2;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -8,19 +10,59 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class Main2504v2Test {
 
     @Test
-    void testMain2504v2() {
+    @DisplayName("ps1 테스트")
+    void testMain2504v2Case1() {
         // given
         String ps1 = "(()[[]])([])";
-        String ps2 = "[][]((])";
+//        String ps2 = "[][]((])";
 
         // when
-        System.out.println("===== ps1 = " + ps1 + " =====");
+//        System.out.println("===== ps1 = " + ps1 + " =====");
         int result1 = Main2504v2.solution(ps1);
-        System.out.println("===== ps2 = " + ps2 + " =====");
-        int result2 = Main2504v2.solution(ps2);
+//        System.out.println("===== ps2 = " + ps2 + " =====");
+//        int result2 = Main2504v2.solution(ps2);
 
         // then
         assertEquals(28, result1);
+//        assertEquals(0, result2);
+    }
+
+    @Test
+    @DisplayName("ps2 테스트")
+    void testMain2504v2Case2() {
+        // given
+        String ps2 = "[][]((])";
+
+        // when
+        int result2 = Main2504v2.solution(ps2);
+
+        // then
         assertEquals(0, result2);
+    }
+
+    @Test
+    @DisplayName("ps3 테스트")
+    void testMain2504v2Case3() {
+        // given
+        String ps3 = "(()[]";
+
+        // when
+        int result3 = Main2504v2.solution(ps3);
+
+        // then
+        assertEquals(0, result3);
+    }
+
+    @Test
+    @DisplayName("ps4 테스트")
+    void testMain2504v2Case4() {
+        // given
+        String ps4 = "([(]";
+
+        // when
+        int result4 = Main2504v2.solution(ps4);
+
+        // then
+        assertEquals(0, result4);
     }
 }
