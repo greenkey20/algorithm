@@ -90,6 +90,8 @@ public class Main2504v2 {
         int temp = 1;
         int result = 0;
 
+        if (ps.length() == 1) return 0; // 2023.6.29(목) 0h5 여전히 empty stack exception <- test case4(닫는 괄호로 시작하는 문자열이 주어진 경우)
+
         for (int i = 0; i < ps.length(); i++) {
             char thisCh = ps.charAt(i);
 //            System.out.println("현재 순회 문자 thisCh = " + thisCh);

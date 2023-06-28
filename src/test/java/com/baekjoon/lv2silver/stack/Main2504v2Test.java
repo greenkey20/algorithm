@@ -14,7 +14,7 @@ class Main2504v2Test {
     void testMain2504v2Case1() {
         // given
         String ps1 = "(()[[]])([])";
-//        String ps2 = "[][]((])";
+//        String ps2 = ")(";
 
         // when
 //        System.out.println("===== ps1 = " + ps1 + " =====");
@@ -40,11 +40,12 @@ class Main2504v2Test {
         assertEquals(0, result2);
     }
 
+    // 2023.6.28(수) 23h50 추가
     @Test
     @DisplayName("ps3 테스트")
     void testMain2504v2Case3() {
         // given
-        String ps3 = "(()[]";
+        String ps3 = ")"; // 이러한 경계값 케이스 테스트 해 보니 stack.peek() 부분에서 empty stack 오류 발생 확인
 
         // when
         int result3 = Main2504v2.solution(ps3);
@@ -53,11 +54,12 @@ class Main2504v2Test {
         assertEquals(0, result3);
     }
 
+    // 2023.6.29(목) 0h5 나의 질문 = 왜 이 테스트만 별도로 실행 시에만 empty stack 예외가 발생하고, 이 테스트 클래스 전체 테스트할 때는 통과하는 거지?
     @Test
     @DisplayName("ps4 테스트")
     void testMain2504v2Case4() {
         // given
-        String ps4 = "([(]";
+        String ps4 = ")(";
 
         // when
         int result4 = Main2504v2.solution(ps4);
