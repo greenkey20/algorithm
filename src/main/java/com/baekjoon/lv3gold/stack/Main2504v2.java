@@ -143,7 +143,7 @@ public class Main2504v2 {
                         temp *= 2;
                         rootNode.addSum(temp);
                         sum += rootNode.getSum();
-                        rootNode = null; // 2023.6.29(목) 0h40 현재 깊이 생각 안 하고, 테스트 케이스 하나하나 추가하며 주먹구구식으로 수정하고 있다.. 전체적인 로직을 다시 확인해보자..
+                        rootNode = null; // 2023.6.29(목) 0h40 현재 깊이 생각 안 하고, 테스트 케이스 하나하나 추가하며 주먹구구식으로 수정하고 있다.. 전체적인 로직을 다시 확인해보자 -> 0h50 현재로써는 무엇을, 어떻게, 더 검토해야 할지 잘 모르겠다
                     }
                 } else if (top == '[' && thisCh == ']') {
                     stack.pop();

@@ -13,7 +13,8 @@ class Main2504v2Test {
     @DisplayName("ps1 테스트")
     void testMain2504v2Case1() {
         // given
-        String ps1 = "(()[[]])([])";
+//        String ps1 = "(()[[]])[([])]"; // 22 + 3*2*3 = 40
+        String ps1 = "(()[[]])([])"; // 22 + 3*2 = 28
 //        String ps2 = ")(";
 
         // when
@@ -82,12 +83,12 @@ class Main2504v2Test {
         assertEquals(0, result);
     }
 
-    // 2023.6.29(목) 0h25 추가 = 현재 actual 9가 나옴
+    // 2023.6.29(목) 0h25 추가 = 현재 actual 9가 나옴 -> 2023.6.29(목) 0h45 버전으로 고침
     @Test
     @DisplayName("ps6 테스트")
     void testMain2504v2Case6() {
         // given
-        String ps6 = "[]()";
+        String ps6 = "()[]";
 
         // when
         int result = Main2504v2.solution(ps6);
@@ -122,5 +123,32 @@ class Main2504v2Test {
 
         // then
         assertEquals(3, result);
+    }
+
+    // 2023.6.29(목) 0h50 추가
+    @Test
+    @DisplayName("ps9 테스트")
+    void testMain2504v2Case9() {
+        // given
+        String ps9 = "([])";
+
+        // when
+        int result = Main2504v2.solution(ps9);
+
+        // then
+        assertEquals(6, result);
+    }
+
+    @Test
+    @DisplayName("ps10 테스트")
+    void testMain2504v2Case10() {
+        // given
+        String ps10 = "[([)]";
+
+        // when
+        int result = Main2504v2.solution(ps10);
+
+        // then
+        assertEquals(0, result);
     }
 }
