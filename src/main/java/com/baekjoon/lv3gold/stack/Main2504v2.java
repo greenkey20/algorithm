@@ -91,12 +91,15 @@ public class Main2504v2 {
         int result = 0;
 
         if (ps.length() == 1) return 0; // 2023.6.29(목) 0h5 여전히 empty stack exception <- test case4(닫는 괄호로 시작하는 문자열이 주어진 경우)
-        if (ps.charAt(0) == ')' || ps.charAt(0) == ']') return 0; // 2023.6.29(목) 0h15 추가 -> test case4는 통과하는데, 여전히 empty stack exception
+//        if (ps.charAt(0) == ')' || ps.charAt(0) == ']') return 0; // 2023.6.29(목) 0h15 추가 -> test case4는 통과하는데, 여전히 empty stack exception
 
         for (int i = 0; i < ps.length(); i++) {
             char thisCh = ps.charAt(i);
 //            System.out.println("현재 순회 문자 thisCh = " + thisCh);
 //            char nextCh = ps.charAt(i + 1);
+
+            // 2023.6.29(목) 0h20 추가 -> 틀렸습니다
+            if (stack.isEmpty() && ((thisCh == ')' || thisCh == ']'))) return 0;
 
             if (thisCh == '(' || thisCh == '[') { // 금번 확인하는 문자가 여는 괄호인 경우
                 if (rootNode == null) {

@@ -67,4 +67,19 @@ class Main2504v2Test {
         // then
         assertEquals(0, result4);
     }
+
+    // 2023.6.29(목) 0h20 추가
+    @Test
+    @DisplayName("ps5 테스트")
+    void testMain2504v2Case5() {
+        // given
+        String ps5 = "()]";
+
+        // when
+        int result = Main2504v2.solution(ps5);
+
+        // then
+        assertEquals(0, result);
+    }
+
 }
