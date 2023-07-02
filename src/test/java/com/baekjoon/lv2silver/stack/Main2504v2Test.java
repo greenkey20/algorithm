@@ -1,6 +1,5 @@
 package com.baekjoon.lv2silver.stack;
 
-import com.baekjoon.lv3gold.stack.Main2504v2;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

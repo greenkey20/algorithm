@@ -1,4 +1,4 @@
-package com.baekjoon.lv3gold.stack;
+package com.baekjoon.lv2silver.stack;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -99,7 +99,7 @@ public class Main2504v2 {
 //            char nextCh = ps.charAt(i + 1);
 
             // 2023.6.29(목) 0h20 추가 -> 틀렸습니다
-            if (stack.isEmpty() && ((thisCh == ')' || thisCh == ']'))) return 0;
+            if (stack.isEmpty() && (thisCh == ')' || thisCh == ']')) return 0;
 
             if (thisCh == '(' || thisCh == '[') { // 금번 확인하는 문자가 여는 괄호인 경우
                 if (rootNode == null) {
