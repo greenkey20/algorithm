@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 // 2023.7.2(일) 16h50
-// ~ 16h55 모든 경우의 수를 탐색하지는 않는 초안 작성 후, 알고리즘 책에서 동적 프로그래밍에 대해 읽기 시작
+// ~ 16h55 모든 경우의 수를 탐색하지는 않는 초안 작성 후, 알고리즘 책에서 동적 프로그래밍에 대해 읽기 시작 + 2023.7.4(화) 23h30 레퍼런스들 읽어보기
 public class Main1463 {
     public static void main(String[] args) throws IOException {
         // 데이터 입력받기
