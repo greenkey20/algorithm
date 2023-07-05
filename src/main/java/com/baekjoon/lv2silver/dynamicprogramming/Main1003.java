@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-// 2023.7.5(수) 11h20 ~ 12h10 v1 원하는 대로 동작 안 함
+// 2023.7.5(수) 11h20 연습장에 f(0), f(1) 출력 횟수 각각에 대한 table 만들어서 n이 0일 때부터 손으로 써서 패턴 찾아봄 -> ~ 12h10 v1 원하는 대로 동작 안 함 -> 13h55 ~ 14h 검토 및 수정 v2 = 맞았습니다
 public class Main1003 {
     public static int[] dp;
     public static int n;
@@ -31,7 +31,7 @@ public class Main1003 {
             int numOfCall1 = 0;
 
             fibonacci(n);
-            System.out.println(Arrays.toString(dp));
+//            System.out.println(Arrays.toString(dp)); // todo
 
             if (n > 0) {
                 numOfCall0 = dp[n - 1];
@@ -60,7 +60,7 @@ public class Main1003 {
         // 문제를 더 작은 단위로 나눌 수 있는 경우
         if (n > 1) {
             for (int i = 2; i <= n; i++) {
-                dp[n] = dp[n - 1] + dp[n - 2];
+                dp[i] = dp[i - 1] + dp[i - 2];
             }
         }
 //        return fibonacci(n - 1) - fibonacci(n - 2);
