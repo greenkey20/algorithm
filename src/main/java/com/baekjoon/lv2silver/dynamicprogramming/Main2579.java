@@ -61,7 +61,11 @@ public class Main2579 {
     public static int solution(int n, int[] scores) {
         int[] dp = new int[n + 1];
         dp[1] = scores[0];
-        dp[2] = scores[0] + scores[1];
+
+        // 2023.7.6(목) 23h55 예외 처리해서 제출 = 맞았습니다
+        if (n > 1) {
+            dp[2] = scores[0] + scores[1];
+        }
 
         for (int i = 3; i <= n; i++) {
             dp[i] = Math.max(dp[i - 2], dp[i - 3] + scores[i - 2]) + scores[i - 1];
