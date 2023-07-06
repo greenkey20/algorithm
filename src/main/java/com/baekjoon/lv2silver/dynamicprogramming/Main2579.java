@@ -29,20 +29,23 @@ public class Main2579 {
     public static int solution(int n, int[] scores) {
         int[] dp = new int[n + 1]; // dp[i] = i번째 계단에 도달할 때까지 얻을 수 있는 총 점수의 최대 값
         dp[1] = scores[0];
-        int count = 1; // 테스트1은 통과x + 테스트2는 통과
+//        int count = 1; // 테스트1은 통과x + 테스트2는 통과
+        boolean is3Steps = false;
+
+//        dp[2] = Math.max(dp[1] + scores[1], dp[0] + scores[1]);
 
         for (int i = 2; i <= n; i++) {
             int score1stepBehind = dp[i - 1];
             int score2stepsBehind = dp[i - 2];
             int scoreOfThisStep = scores[i - 1];
 
-            if (count > 0) {
+            if (is3Steps) {
                 dp[i] = score2stepsBehind + scoreOfThisStep;
-                count = 0;
+                is3Steps = false;
             } else {
-                if (score1stepBehind > score2stepsBehind) {
+                if (score1stepBehind + scoreOfThisStep > score2stepsBehind + scoreOfThisStep) {
                     dp[i] = score1stepBehind + scoreOfThisStep;
-                    count++;
+                    is3Steps = true;
                 } else {
                     dp[i] = score2stepsBehind + scoreOfThisStep;
                 }
