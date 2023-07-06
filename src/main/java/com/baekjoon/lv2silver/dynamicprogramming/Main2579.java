@@ -29,7 +29,7 @@ public class Main2579 {
     public static int solution(int n, int[] scores) {
         int[] dp = new int[n + 1]; // dp[i] = i번째 계단에 도달할 때까지 얻을 수 있는 총 점수의 최대 값
         dp[1] = scores[0];
-        int count = 0; // 테스트1은 통과 + 테스트2는 통과x
+        int count = 1; // 테스트1은 통과x + 테스트2는 통과
 
         for (int i = 2; i <= n; i++) {
             int score1stepBehind = dp[i - 1];
