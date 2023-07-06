@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 
 // 2023.7.5(수) 11h20 연습장에 f(0), f(1) 출력 횟수 각각에 대한 table 만들어서 n이 0일 때부터 손으로 써서 패턴 찾아봄 -> ~ 12h10 v1 원하는 대로 동작 안 함 -> 13h55 ~ 14h 검토 및 수정 v2 = 맞았습니다
+// 부트캠프 레퍼런스 + 기타 레퍼런스 찾아서 내 코드랑 비교해보기
 public class Main1003 {
     public static int[] dp;
     public static int n;
