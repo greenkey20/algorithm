@@ -11,6 +11,7 @@ public class AverageScoreForGraduation {
      * 가정:
      * 1. null이 입력으로 들어오는 경우
      * 2. 빈 배열이 입력으로 들어오는 경우
+     *
      * @param scores
      * @return
      */
@@ -31,7 +32,7 @@ public class AverageScoreForGraduation {
         }
 
         if (scores.length == 0) {
-            return 0;
+            return 1;
         }
 
         int result = 0;
@@ -39,6 +40,16 @@ public class AverageScoreForGraduation {
         double average = 0;
 
         for (int i = 0; i < scores.length; i++) {
+            int score = scores[i];
+
+            try {
+                if (score < 0) {
+                    throw new IllegalArgumentException();
+                }
+            } catch (IllegalArgumentException e) {
+                System.out.println("Illegal Argument Exception이 발생했습니다");
+            }
+
             sum += scores[i];
         }
 

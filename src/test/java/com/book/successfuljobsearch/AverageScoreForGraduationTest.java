@@ -35,7 +35,7 @@ class AverageScoreForGraduationTest {
         int actual = getNumOfExamsForGraduation(scores);
 
         // then
-        int expected = 0;
+        int expected = 1; // 20h10 책 다시 읽으며 생각해보니, 기존 과목 점수가 없는 경우 = 빈 배열이 입력으로 들어온 경우, 1번 100점 맞으면 평균 90점 이상이 되는 것이므로, 1을 return하는 게 맞음
         assertThat(actual, is(equalTo(expected)));
     }
 
@@ -51,5 +51,15 @@ class AverageScoreForGraduationTest {
         // then
         int expected = 1;
         assertThat(actual, is(equalTo(expected)));
+    }
+
+    @Test
+    @DisplayName("입력 배열 원소 중 음수가 있는 경우 테스트")
+    void testCase4() {
+        // given
+        int[] scores = new int[]{0, 60, -76, 40};
+
+        // when + then
+        assertThrows(IllegalArgumentException.class, () -> getNumOfExamsForGraduation(scores));
     }
 }
