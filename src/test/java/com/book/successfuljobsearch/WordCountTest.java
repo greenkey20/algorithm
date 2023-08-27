@@ -44,7 +44,7 @@ public class WordCountTest {
     @Test
     @DisplayName("일반 문자열, 빈 문자열이 섞여서 입력으로 들어온 경우 테스트")
     void testCase4() {
-        String[] words = {"과목", "수첩", "", "연필", "과목", "", "시험"};
+        String[] words = {"과목", "수첩", "", "연필", "과목", "", "시험", "가방", "가방", "가방"};
 
         // 나의 생각 = map, set처럼 순서 보장 안 되는 경우 어떻게 내용물을 테스트하는 것이 좋은가?
         String actual = countWords(words);

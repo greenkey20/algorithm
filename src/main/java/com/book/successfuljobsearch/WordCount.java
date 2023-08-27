@@ -1,9 +1,9 @@
 package com.book.successfuljobsearch;
 
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 // 2023.8.26(토) 23h50
 public class WordCount {
@@ -14,7 +14,9 @@ public class WordCount {
     /**
      * 문제: 많이 사용된 단어 확인을 위해 단어 추출 프로그램을 만들었다.
      * 단어 목록을 받으면 각 단어별로 개수를 화면에 출력하는 프로그램을 만드시오.
-     * <p>
+     *
+     * 2023.8.27(일) 13h55 조건 추가 = 출력되는 단어는 가나다 순으로 정렬되어야만 한다
+     *
      * 입출력 예시1)
      * 입력) [과목, 수첩, 연필, 과목, 시험]
      * 출력)
@@ -44,7 +46,7 @@ public class WordCount {
         StringBuffer sb = new StringBuffer();
 
         // 각 단어와 사용 횟수를 각각 key:value로 저장할 map을 만든다
-        Map<String, Integer> wordAndCountMap = new HashMap<>();
+        Map<String, Integer> wordAndCountMap = new TreeMap<>();
 
         // 입력으로 주어진 배열의 원소(단어)들을 하나하나 순회하면서
         for (int i = 0; i < words.length; i++) {
