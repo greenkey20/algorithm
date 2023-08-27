@@ -47,6 +47,7 @@ public class WordCount {
 
         // 각 단어와 사용 횟수를 각각 key:value로 저장할 map을 만든다
         Map<String, Integer> wordAndCountMap = new TreeMap<>();
+        // 추가 조건 구현을 위해 TreeMap 사용 이외에 Stream으로도 작성해보자 <- reference = https://howtodoinjava.com/java/sort/java-sort-map-by-key/
 
         // 입력으로 주어진 배열의 원소(단어)들을 하나하나 순회하면서
         for (int i = 0; i < words.length; i++) {
