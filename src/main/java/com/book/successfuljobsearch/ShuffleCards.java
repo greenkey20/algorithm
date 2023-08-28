@@ -14,19 +14,22 @@ public class ShuffleCards {
      * 프로그램 실행할 때마다 다른 숫자 카드 배열을 제공하는 프로그램을 만들어라.
      * (중복되지 않은 10개의 결과 값이 나열되어야 하며, 결과는 매번 상이해야 함)
      *
+     * 2023.8.28(월) 15h15 문제 조건 변경
+     * 정수 n을 매개변수로 입력 받아 무작위로 나열하는 프로그램을 작성하라.
+     *
      * @return
      */
-    public static int[] shuffleCards() {
+    public static int[] shuffleCards(int n) {
         // 10 shuffled cards를 담아서 반환할, 크기 10인 정수형 배열 선언 및 초기화
-        int[] resultsArray = new int[10];
+        int[] resultsArray = new int[n];
 
         // 특정 숫자가 이미 뽑혔는지 확인하기 위해 set을 만들어 활용하고자 함
         Set<Integer> resultsSet = new HashSet<>();
 
         // 10번 random 숫자를 뽑고자 함
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < n; i++) {
             // 1~10 사이의 정수를 랜덤으로 뽑음
-            int thisNum = ((int) (Math.random() * 10)) + 1;
+            int thisNum = ((int) (Math.random() * n)) + 1;
 
             if (resultsSet.contains(thisNum)) { // 금번 뽑은 숫자가 이미 뽑힌 숫자라면
                 i--; // i를 증가시키지 말고, 다시 뽑아야 함

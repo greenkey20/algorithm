@@ -13,10 +13,11 @@ public class ShuffleCardsTest {
     @Test
     void testCase1() {
         // given
+        int n = 5;
 
         // when
-        int[] result1 = shuffleCards();
-        int[] result2 = shuffleCards();
+        int[] result1 = shuffleCards(n);
+        int[] result2 = shuffleCards(n);
 
         // then
         System.out.println(Arrays.toString(result1));
