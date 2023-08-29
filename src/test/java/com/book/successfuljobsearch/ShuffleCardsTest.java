@@ -1,16 +1,19 @@
 package com.book.successfuljobsearch;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
 import static com.book.successfuljobsearch.ShuffleCards.shuffleCards;
+import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 // 2023.8.28(월) 14h20
 public class ShuffleCardsTest {
 
     @Test
+    @DisplayName("n이 2 이상의 정수로 입력된 정상 케이스 테스트")
     void testCase1() {
         // given
         int n = 5;
@@ -30,4 +33,19 @@ public class ShuffleCardsTest {
         // result1 및 result2의 두번째 원소들이 같은지도 확인
         assertNotEquals(result1[1], result2[1]);
     }
+
+    @Test
+    @DisplayName("n이 2 미만의 정수로 입력된 케이스 테스트")
+    void testCase2() {
+        // given
+        int n = 1;
+
+        // when
+//        shuffleCards(n);
+
+        // when + then
+        assertThrows(IllegalArgumentException.class, () -> shuffleCards(n));
+    }
+
+
 }

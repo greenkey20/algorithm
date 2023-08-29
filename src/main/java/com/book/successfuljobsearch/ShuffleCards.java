@@ -17,9 +17,22 @@ public class ShuffleCards {
      * 2023.8.28(월) 15h15 문제 조건 변경
      * 정수 n을 매개변수로 입력 받아 무작위로 나열하는 프로그램을 작성하라.
      *
+     * 2023.8.29(화) 15h20 나의 생각 = 예외 처리를 고민해봐
+     * 1. n이 음수로 주어진 경우
+     * 2. n이 0 또는 1로 주어진 경우
+     *
      * @return
      */
     public static int[] shuffleCards(int n) {
+        // 2023.8.29(화) 15h20 추가
+        try {
+            if (n < 2) {
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("Illegal argument exception이 발생했습니다. 유효하지 않은 n이 입력되었습니다.");
+        }
+
         // 10 shuffled cards를 담아서 반환할, 크기 10인 정수형 배열 선언 및 초기화
         int[] resultsArray = new int[n];
 
