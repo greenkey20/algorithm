@@ -45,6 +45,22 @@ public class ImplementMapTest {
         assertThat(ImplementMap.implementMaps.size(), is(equalTo(3)));
 
         // get() 메서드 테스트
+        // when
 //        String value1 = ImplementMap.implementMaps.get("토미");
+//        ImplementMap implementMap = new ImplementMap();
+        String value1 = ImplementMap.get("토미");
+
+        // then
+        String expected1 = "컴퓨터 구조";
+
+        System.out.println("value1 = " + value1);
+        assertThat(value1, is(equalTo(expected1)));
+
+        // given
+        String value2 = ImplementMap.get("혁");
+
+        // then
+        String expected2 = null;
+        assertThat(value2, is(equalTo(expected2)));
     }
 }
