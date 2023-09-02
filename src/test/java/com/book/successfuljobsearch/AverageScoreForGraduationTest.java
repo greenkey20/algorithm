@@ -60,6 +60,6 @@ class AverageScoreForGraduationTest {
         int[] scores = new int[]{0, 60, -76, 40};
 
         // when + then
-        assertThrows(IllegalArgumentException.class, () -> getNumOfExamsForGraduation(scores));
+        assertThrows(IllegalArgumentException.class, () -> getNumOfExamsForGraduation(scores)); // Expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown. 테스트 통과 안 됨 -> 해당 에러가 throw 되게 하려면 어떻게 코드를 고쳐야 하지?
     }
 }
