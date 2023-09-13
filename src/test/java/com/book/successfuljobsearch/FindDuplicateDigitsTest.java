@@ -23,10 +23,10 @@ public class FindDuplicateDigitsTest {
         List<Integer> digits = Arrays.asList(0, 1, 3, 2, 3, 4, 5, 4);
 
         // when
-        Set<Integer> expected = findDuplicateDigits(digits);
+        Set<Integer> actual = findDuplicateDigits(digits);
 
         // then
-        assertThat(expected.size(), is(equalTo(2)));
-        assertTrue(expected.contains(3) && expected.contains(4));
+        assertThat(actual.size(), is(equalTo(2)));
+        assertTrue(actual.contains(3) && actual.contains(4));
     }
 }
