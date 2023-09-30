@@ -47,6 +47,14 @@ public class Main16564 {
         System.out.println("levels 배열 = " + Arrays.toString(levels)); // todo
 
         int result = 0;
+
+        int left = levels[0];
+        int right = levels[n - 1];
+
+        while (left <= right) {
+            int mid = (left + right) / 2;
+        }
+
         return result;
     }
 }
